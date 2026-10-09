@@ -17,7 +17,7 @@ This is an early static starter. Tool cards marked “Coming soon” are not int
 1. Open Cloudflare Dashboard and go to Workers & Pages.
 2. Create a Pages project and connect this GitHub repository.
 3. Choose the `main` branch.
-4. For this plain HTML site, leave the build command empty and set the output directory to `/` (the repository root) if the current dashboard accepts that setting.
+4. For this plain HTML site, leave the build command empty and set the output directory to `.` (the repository root).
 5. Deploy, then open the provided Pages URL to test the homepage and all navigation links.
 
 Keep the repository private if you prefer. Do not put passwords, API keys, or other secrets in frontend files.

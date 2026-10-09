@@ -59,6 +59,8 @@
     document.documentElement.lang = language === "ur" ? "ur-PK" : "en";
     document.documentElement.dir = language === "ur" ? "rtl" : "ltr";
     document.body.classList.toggle("lang-ur", language === "ur");
+    const pageTitle = document.querySelector("title");
+    if (pageTitle) pageTitle.textContent = language === "ur" ? "عبید ڈاکٹرائن لیبز — ڈیجیٹل ٹولز" : "Obaid Doctrine Labs — Tools for a clearer way forward";
     try { localStorage.setItem("odl-language", language); } catch (_) {}
     translate(document);
     document.querySelectorAll("[data-language]").forEach(button => {

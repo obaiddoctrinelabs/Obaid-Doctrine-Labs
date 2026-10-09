@@ -1,0 +1,96 @@
+/* Lightweight English / Pakistani Urdu localization for the existing static site. */
+(function () {
+  "use strict";
+  const dictionary = {
+    "Tool library":"ٹولز کی لائبریری","PDF AI Tool":"پی ڈی ایف اے آئی ٹول","Our principles":"ہمارے اصول","Privacy":"رازداری","Share an idea":"اپنا خیال بتائیں","Less friction.":"کم رکاوٹیں۔","More forward.":"زیادہ پیش رفت۔",
+    "INDEPENDENT DIGITAL LAB":"آزاد ڈیجیٹل لیب","EST. FOR EVERYDAY WORK":"روزمرہ کام کے لیے","A growing collection of thoughtful digital tools that make everyday work feel simpler. Clear by design. Practical by nature. Built with privacy in mind.":"کارآمد ڈیجیٹل ٹولز کا بڑھتا ہوا مجموعہ، جو روزمرہ کے کام آسان بناتا ہے۔ واضح ڈیزائن، عملی استعمال اور رازداری کو مدِنظر رکھ کر تیار کیا گیا۔",
+    "Explore the toolbox":"ٹولز دیکھیں","Discover our approach":"ہمارا طریقۂ کار جانیں","Made to be useful.":"فائدہ پہنچانے کے لیے بنایا گیا","Browser tools run locally; AI features require an active server-side AI binding.":"براؤزر والے ٹولز آپ کے آلے پر چلتے ہیں؛ اے آئی فیچرز کے لیے سرور پر اے آئی سروس فعال ہونا ضروری ہے۔",
+    "Useful first":"افادیت پہلے","Tools for real tasks":"حقیقی کاموں کے لیے ٹولز","Privacy aware":"رازداری کا خیال","Local processing where possible":"جہاں ممکن ہو، مقامی پروسیسنگ","Clear by design":"واضح ڈیزائن","Less clutter, more focus":"کم الجھن، زیادہ توجہ","THE TOOL LIBRARY":"ٹولز کی لائبریری","FIND YOUR NEXT STEP":"اپنا اگلا قدم چنیں",
+    "What are we":"آج ہم کیا","solving today?":"حل کریں؟","Pick a starting point. Each tool is designed to make one small task easier, right in your browser.":"اپنی ضرورت کے مطابق ٹول منتخب کریں۔ ہر ٹول براؤزر میں ایک مخصوص کام آسان بنانے کے لیے بنایا گیا ہے۔",
+    "Search tools, tasks, or categories…":"ٹولز، کام یا اقسام تلاش کریں…","Search tools":"ٹولز تلاش کریں","All tools":"تمام ٹولز","Writing":"تحریر","Productivity":"پیداواری صلاحیت","Data & dev":"ڈیٹا اور ڈیولپمنٹ","Everyday":"روزمرہ","tools to explore":"ٹولز دستیاب ہیں","SELECT A TOOL TO GET STARTED":"شروع کرنے کے لیے ٹول منتخب کریں",
+    "Writing Helper":"تحریری معاون","Turn your goal and tone into a clearer writing brief or prompt.":"اپنے مقصد اور انداز کے مطابق واضح تحریری ہدایات تیار کریں۔","Text Formatter":"متن کی فارمیٹنگ","Clean whitespace, change letter case and prepare text to copy.":"اضافی خالی جگہیں صاف کریں، حروف کی صورت بدلیں اور متن کاپی کرنے کے لیے تیار کریں۔","Unit Converter":"اکائیوں کا کنورٹر","Convert common length, weight and temperature units.":"لمبائی، وزن اور درجۂ حرارت کی عام اکائیاں تبدیل کریں۔","JSON Helper":"JSON معاون","Validate JSON and format structured data for easier reading.":"JSON کی درستگی جانچیں اور ڈیٹا کو پڑھنے میں آسان بنائیں۔","Password Tips":"پاس ورڈ کی حفاظت","Explore safer passphrase habits without sharing a password.":"اپنا اصل پاس ورڈ بتائے بغیر مضبوط پاس فریز کے اصول جانیں۔","Time Planner":"وقت کا منصوبہ ساز","Organize tasks and estimate your available focus time.":"کام ترتیب دیں اور توجہ کے لیے دستیاب وقت کا اندازہ لگائیں۔",
+    "Budget & Expense Planner":"بجٹ اور اخراجات کا منصوبہ","Track income, expenses and your budget balance in PKR.":"پاکستانی روپے میں آمدن، اخراجات اور بجٹ کا حساب رکھیں۔","Study, Quiz & Notes Builder":"مطالعہ، کوئز اور نوٹس","Turn your notes into revision cards and practice questions.":"اپنے نوٹس کو دہرائی کے کارڈز اور مشقی سوالات میں بدلیں۔","AI Writing & Summary":"اے آئی تحریر اور خلاصہ","Improve writing and summarize text with server-side AI when enabled.":"اے آئی سروس فعال ہونے پر تحریر بہتر بنائیں اور خلاصہ تیار کریں۔","Data Converter & CSV Cleaner":"ڈیٹا کنورٹر اور CSV کلینر","Clean CSV whitespace and convert CSV rows to JSON in your browser.":"CSV میں اضافی خالی جگہیں صاف کریں اور قطاروں کو براؤزر میں JSON میں بدلیں۔","Cyber Safety Checker":"سائبر تحفظ جانچ","Review suspicious-message warning signs. It cannot prove a message is safe.":"مشکوک پیغامات کی خطرے کی علامات دیکھیں۔ یہ کسی پیغام کے محفوظ ہونے کی ضمانت نہیں دیتا۔","E-commerce Profit Calculator":"آن لائن کاروبار منافع کیلکولیٹر","Estimate net profit after product, delivery, platform and ad costs.":"مصنوعات، ترسیل، پلیٹ فارم اور اشتہارات کے اخراجات کے بعد منافع کا اندازہ لگائیں۔","Solar Sizing Calculator":"سولر سسٹم کیلکولیٹر","Estimate solar array size from daily energy use and sunlight hours.":"روزانہ بجلی کی ضرورت اور دھوپ کے گھنٹوں سے سولر سسٹم کا اندازہ لگائیں۔","Government Application Guide":"سرکاری درخواست رہنما","Prepare a general document checklist and application plan.":"دستاویزات کی عمومی فہرست اور درخواست کا منصوبہ تیار کریں۔","Agricultural Cost Calculator":"زرعی اخراجات کیلکولیٹر","Estimate per-acre input costs, revenue and break-even price.":"فی ایکڑ اخراجات، آمدن اور لاگت پوری ہونے والی قیمت کا اندازہ لگائیں۔","PDF Research & AI Q&A":"پی ڈی ایف تحقیق اور اے آئی سوال جواب","Upload a PDF, extract its text and ask AI questions about the document.":"پی ڈی ایف اپ لوڈ کریں، اس کا متن نکالیں اور دستاویز کے بارے میں اے آئی سے سوال کریں۔",
+    "Open tool":"ٹول کھولیں","Open PDF AI tool":"پی ڈی ایف اے آئی ٹول کھولیں","No matching tools yet.":"کوئی متعلقہ ٹول نہیں ملا۔","Try another keyword or choose a different category.":"کوئی دوسرا لفظ تلاش کریں یا مختلف قسم منتخب کریں۔","Clear search and filters ↗":"تلاش اور فلٹر صاف کریں ↗","TOOL WORKSPACE":"ٹول ورک اسپیس","Choose a tool":"ٹول منتخب کریں","Close ✕":"بند کریں ✕",
+    "Privacy note: most tools run in your browser. AI writing, summaries and PDF questions send the text you submit to the server-side AI service.":"رازداری: زیادہ تر ٹولز آپ کے براؤزر میں چلتے ہیں۔ اے آئی تحریر، خلاصے اور پی ڈی ایف سوالات کے لیے آپ کا بھیجا ہوا متن سرور کی اے آئی سروس کو بھیجا جاتا ہے۔",
+    "Technology should feel useful, not complicated.":"ٹیکنالوجی مفید ہونی چاہیے، پیچیدہ نہیں۔","We believe good digital experiences are clear, approachable and honest about what they can do.":"ہمارا یقین ہے کہ اچھا ڈیجیٹل تجربہ واضح، آسان اور اپنی صلاحیتوں کے بارے میں دیانت دار ہوتا ہے۔","Read our principles":"ہمارے اصول پڑھیں","Have a useful idea?":"کوئی کارآمد خیال ہے؟","Tell us what would make your everyday work easier. The best tools start with a real need.":"بتائیں کہ روزمرہ کام کو کیا چیز آسان بنا سکتی ہے۔ بہترین ٹول کسی حقیقی ضرورت سے شروع ہوتا ہے۔","Share your idea":"اپنا خیال بتائیں","About":"تعارف","Terms":"شرائط","Contact":"رابطہ","Independent tools for a more capable digital world.":"زیادہ بااختیار ڈیجیٹل دنیا کے لیے آزاد ٹولز۔","All rights reserved.":"جملہ حقوق محفوظ ہیں۔",
+    "What are you writing?":"آپ کیا لکھ رہے ہیں؟","Audience":"قارئین","Tone":"اندازِ تحریر","Key points to include":"شامل کرنے کے اہم نکات","Create brief":"ہدایات بنائیں","Your text":"آپ کا متن","Result":"نتیجہ","Clean spaces":"اضافی خالی جگہیں صاف کریں","Sentence case":"جملے کے مطابق حروف","Copy result":"نتیجہ کاپی کریں","Category":"قسم","Amount":"مقدار","From":"سے","To":"تک","Convert":"تبدیل کریں","JSON input":"JSON اِن پٹ","Validate & format":"درستگی جانچیں اور فارمیٹ کریں","Minify":"مختصر بنائیں","Formatted JSON appears here":"فارمیٹ شدہ JSON یہاں نظر آئے گا","Task name":"کام کا نام","Estimated minutes":"متوقع منٹ","Add task":"کام شامل کریں","Clear list":"فہرست صاف کریں","Text to summarize or improve":"خلاصہ یا بہتری کے لیے متن","Summarize with AI":"اے آئی سے خلاصہ بنائیں","Improve with AI":"اے آئی سے بہتر بنائیں","Choose PDF (up to 12 MB)":"پی ڈی ایف منتخب کریں (زیادہ سے زیادہ 12 ایم بی)","Question about the PDF":"پی ڈی ایف کے بارے میں سوال","Ask about this PDF":"پی ڈی ایف کے بارے میں پوچھیں",
+    "Please enter some text first.":"پہلے کچھ متن درج کریں۔","Copied to clipboard.":"متن کلپ بورڈ پر کاپی ہو گیا۔","There is no result to copy yet.":"کاپی کرنے کے لیے ابھی کوئی نتیجہ موجود نہیں۔","Enter a valid number.":"درست عدد درج کریں۔","Valid JSON.":"JSON درست ہے۔","Invalid JSON: ":"JSON درست نہیں: ","Task added.":"کام شامل ہو گیا۔","List cleared.":"فہرست صاف ہو گئی۔","Working…":"کام جاری ہے…","AI result ready. Please review it for accuracy.":"اے آئی کا نتیجہ تیار ہے۔ درستگی کے لیے اس کا جائزہ لیں۔","Could not reach the AI service.":"اے آئی سروس سے رابطہ نہیں ہو سکا۔"
+  };
+  const originals = new WeakMap();
+  let language = "en";
+  function textNode(node) {
+    if (!originals.has(node)) originals.set(node, node.nodeValue);
+    const original = originals.get(node).trim();
+    if (!original) return;
+    const translated = dictionary[original];
+    if (language === "ur" && translated) {
+      const leading = (originals.get(node).match(/^\s*/) || [""])[0];
+      const trailing = (originals.get(node).match(/\s*$/) || [""])[0];
+      node.nodeValue = leading + translated + trailing;
+    } else node.nodeValue = originals.get(node);
+  }
+  function translate(root) {
+    if (root.nodeType === Node.TEXT_NODE) { textNode(root); return; }
+    if (root.nodeType !== Node.ELEMENT_NODE && root.nodeType !== Node.DOCUMENT_NODE) return;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let n; while ((n = walker.nextNode())) textNode(n);
+    if (root.nodeType === Node.ELEMENT_NODE) {
+      ["placeholder","aria-label","title"].forEach(attr => {
+        if (!root.hasAttribute(attr)) return;
+        const key = "attr:" + attr;
+        if (!root.dataset[key.replace(":","")]) root.dataset[key.replace(":","")] = root.getAttribute(attr);
+        const original = root.dataset[key.replace(":","")];
+        root.setAttribute(attr, language === "ur" ? (dictionary[original] || original) : original);
+      });
+      if (root.querySelectorAll) root.querySelectorAll("[placeholder],[aria-label],[title]").forEach(el => {
+        ["placeholder","aria-label","title"].forEach(attr => {
+          if (!el.hasAttribute(attr)) return;
+          const dataKey = "i18n" + attr.replace(/[^a-z]/gi,"");
+          if (!el.dataset[dataKey]) el.dataset[dataKey] = el.getAttribute(attr);
+          const original = el.dataset[dataKey];
+          el.setAttribute(attr, language === "ur" ? (dictionary[original] || original) : original);
+        });
+      });
+    }
+  }
+  function setLanguage(next) {
+    language = next === "ur" ? "ur" : "en";
+    document.documentElement.lang = language === "ur" ? "ur-PK" : "en";
+    document.documentElement.dir = language === "ur" ? "rtl" : "ltr";
+    document.body.classList.toggle("lang-ur", language === "ur");
+    try { localStorage.setItem("odl-language", language); } catch (_) {}
+    translate(document);
+    document.querySelectorAll("[data-language]").forEach(button => {
+      const active = button.dataset.language === language;
+      button.setAttribute("aria-pressed", String(active));
+    });
+  }
+  function mount() {
+    if (!document.querySelector("[data-language-switcher]")) {
+      const nav = document.getElementById("mainNav");
+      if (nav) {
+        const switcher = document.createElement("div");
+        switcher.className = "language-switcher";
+        switcher.setAttribute("data-language-switcher", "");
+        switcher.setAttribute("role", "group");
+        switcher.setAttribute("aria-label", "Language");
+        switcher.innerHTML = '<button type="button" data-language="en" aria-pressed="true">English</button><button type="button" data-language="ur" aria-pressed="false">اردو</button>';
+        nav.appendChild(switcher);
+        switcher.addEventListener("click", event => {
+          const button = event.target.closest("[data-language]");
+          if (button) setLanguage(button.dataset.language);
+        });
+      }
+    }
+    let saved = "en";
+    try { saved = localStorage.getItem("odl-language") || "en"; } catch (_) {}
+    setLanguage(saved);
+    const observer = new MutationObserver(records => records.forEach(record => {
+      if (record.type === "characterData") textNode(record.target);
+      record.addedNodes && record.addedNodes.forEach(node => translate(node));
+    }));
+    observer.observe(document.body, {subtree:true,childList:true,characterData:true});
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", mount, {once:true}); else mount();
+  window.ODL_I18N = { setLanguage, getLanguage: () => language, dictionary };
+})();

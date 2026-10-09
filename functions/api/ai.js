@@ -32,7 +32,7 @@ export async function onRequestPost({ request, env }) {
     ? instructions[task] + "\nQuestion: " + question + "\nPDF text:\n" + text
     : instructions[task] + "\nUser text:\n" + text;
   try {
-    const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+    const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct-fp8", {
       messages: [
         { role: "system", content: "You are a careful assistant inside Obaid Doctrine Labs. Be accurate, concise, and transparent about uncertainty." },
         { role: "user", content: prompt }
@@ -46,7 +46,7 @@ export async function onRequestPost({ request, env }) {
     // Keep detailed diagnostics in Cloudflare logs, but do not expose provider internals to visitors.
     console.error("Workers AI request failed", {
       message: error instanceof Error ? error.message : String(error),
-      model: "@cf/meta/llama-3.1-8b-instruct",
+      model: "@cf/meta/llama-3.1-8b-instruct-fp8",
       task
     });
     const detail = (error instanceof Error ? error.message : String(error)).toLowerCase();

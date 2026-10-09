@@ -16,3 +16,41 @@ footer{background:#102e22;color:white;padding:31px max(5.5vw,24px) 23px;display:
 @media(max-width:760px){.site-header{height:68px}.menu-toggle{display:block}.site-header nav{display:none;position:absolute;top:67px;left:0;right:0;background:var(--paper);padding:19px 24px 22px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:18px}.site-header nav.open{display:flex}.nav-cta{display:flex}.hero{grid-template-columns:1fr;padding:56px 25px 48px;gap:34px}.hero h1{font-size:clamp(50px,10.8vw,72px);letter-spacing:-3.4px}.hero h1 span{letter-spacing:-2.5px}.hero-copy{max-width:540px;font-size:13px}.hero-visual{justify-self:center;max-width:560px}.signal-grid{grid-template-rows:200px 145px}.hero-index{left:25px}.principle-strip{grid-template-columns:1fr 1fr;gap:18px;padding:24px 25px}.principle-strip>div{padding:0 10px;border-right:0}.principle-strip>div:nth-child(odd){padding-left:0;border-right:1px solid #d4ddcc}.principle-strip .strip-end{display:none}.tools-section{padding:65px 22px 68px}.section-heading{align-items:flex-start;flex-direction:column;gap:15px;padding:25px 0}.section-heading>p{max-width:470px}.tool-controls{align-items:stretch;flex-direction:column}.search-box{max-width:none;width:100%}.filter-row{display:flex;overflow-x:auto;padding-bottom:2px}.filter-chip{white-space:nowrap}.tool-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tool-card{padding:15px 14px;min-height:218px}.card-top{margin-bottom:15px}.tool-card h3{font-size:13px}.mission{grid-template-columns:auto 1fr;gap:17px;padding:40px 23px}.mission-symbol{width:47px;height:47px}.mission h2{font-size:clamp(27px,5vw,37px)}.mission .text-link{grid-column:2}.bottom-cta{padding:64px 22px 55px}footer{gap:14px}.footer-links{width:100%;padding-top:8px}footer>p{margin-right:0;flex-basis:100%}}
 @media(max-width:430px){.brand-name{font-size:9px;letter-spacing:.85px}.hero{padding-top:48px}.hero .eyebrow{font-size:8px;letter-spacing:1px;flex-wrap:wrap}.hero h1{font-size:48px}.hero-actions{align-items:flex-start;flex-direction:column;gap:17px}.hero-trust{margin-top:29px}.signal-grid{grid-template-rows:170px 120px;gap:7px}.signal-cell{padding:12px}.signal-mark{width:43px;height:43px;right:10px;top:35px}.signal-title{font-size:20px}.signal-symbol{font-size:60px}.outline-number{font-size:25px}.visual-topline,.visual-caption{font-size:7px;letter-spacing:.8px}.principle-strip{padding:22px}.principle-strip>div{grid-template-columns:24px 1fr}.principle-strip b{font-size:11px}.principle-strip small{font-size:9px}.tool-grid{grid-template-columns:1fr}.tool-card{min-height:195px;padding:17px}.card-top{margin-bottom:17px}.tool-card h3{font-size:15px}.tool-card p{font-size:12px}.section-heading h2{font-size:38px}.mission{grid-template-columns:1fr}.mission .text-link{grid-column:1}.footer-note{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+
+/* ODL premium polish — responsive depth, focus and refined motion */
+:root{--shadow-soft:0 18px 45px rgba(16,41,31,.07);--shadow-lift:0 22px 46px rgba(16,41,31,.12)}
+::selection{background:#d9f27d;color:#10291f}
+body{background-image:radial-gradient(ellipse at 12% 7%,rgba(217,242,125,.11),transparent 31%),linear-gradient(180deg,#f8f8f2 0%,var(--paper) 48%,#f8f8f2 100%)}
+.site-header{box-shadow:0 4px 22px rgba(16,41,31,.025);transition:box-shadow .25s}
+.brand-mark{box-shadow:0 5px 12px rgba(16,41,31,.13);transition:transform .25s,box-shadow .25s}
+.brand:hover .brand-mark{transform:rotate(-5deg) translateY(-1px);box-shadow:0 8px 18px rgba(16,41,31,.18)}
+.nav-cta{transition:transform .2s,background .2s,box-shadow .2s}
+.nav-cta:hover{background:#214b36;transform:translateY(-1px);box-shadow:0 8px 18px rgba(16,41,31,.12)}
+.hero{background-image:radial-gradient(ellipse at 88% 42%,rgba(217,242,125,.14),transparent 34%)}
+.hero-visual{filter:drop-shadow(0 18px 30px rgba(16,41,31,.055))}
+.signal-cell{transition:transform .25s,box-shadow .25s}
+.signal-cell:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(16,41,31,.09)}
+.signal-main{background:linear-gradient(145deg,#173e2d,#10291f)}
+.signal-lime{background:linear-gradient(145deg,#e4f7a0,#d9f27d)}
+.principle-strip{position:relative}
+.principle-strip:before{content:"";position:absolute;left:0;top:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,#b7cba8,transparent)}
+.tools-section{position:relative}
+.tool-card{position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(16,41,31,.018)}
+.tool-card:before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:3px;background:linear-gradient(90deg,#d9f27d,#70966a);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.tool-card:hover:before,.tool-card:focus-within:before{transform:scaleX(1)}
+.tool-card:hover{box-shadow:var(--shadow-lift);transform:translateY(-4px)}
+.tool-card.featured{background:linear-gradient(145deg,#f0f4e9,#e9efe0)}
+.tool-icon{transition:transform .25s,box-shadow .25s}
+.tool-card:hover .tool-icon{transform:translateY(-2px) rotate(-3deg);box-shadow:0 5px 12px rgba(16,41,31,.07)}
+.filter-chip{transition:background .18s,color .18s,border-color .18s}
+.filter-chip:focus-visible,.tool-open:focus-visible,.button:focus-visible{outline-offset:4px}
+.button.primary{transition:transform .2s,background .2s,box-shadow .2s}
+.button.primary:hover{background:#214b36;box-shadow:0 12px 25px rgba(16,41,31,.16)}
+.workspace{box-shadow:var(--shadow-soft)}
+.mission{background-image:radial-gradient(ellipse at 8% 50%,rgba(217,242,125,.18),transparent 32%),linear-gradient(115deg,#edf0e5,#e7ecdf)}
+.bottom-cta{background-image:radial-gradient(ellipse at 50% 0%,rgba(217,242,125,.15),transparent 48%)}
+.cta-orbit{box-shadow:0 0 0 7px rgba(217,242,125,.09),0 0 0 14px rgba(217,242,125,.045)}
+footer{background-image:radial-gradient(ellipse at 90% 0%,rgba(110,153,92,.16),transparent 36%)}
+@media(max-width:760px){.site-header{box-shadow:0 3px 16px rgba(16,41,31,.045)}.hero-visual{filter:none}.signal-cell:hover,.tool-card:hover{transform:none}.tool-card:hover{box-shadow:0 8px 18px rgba(16,41,31,.07)}}
+@media(prefers-reduced-motion:reduce){.signal-cell,.tool-card,.tool-icon,.brand-mark,.nav-cta,.button.primary{transition:none}}

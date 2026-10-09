@@ -42,6 +42,15 @@
     "Back to tool library":"ٹولز کی لائبریری پر واپس جائیں","Choose a PDF to begin.":"شروع کرنے کے لیے پی ڈی ایف منتخب کریں۔",
     "← Back to home":"← ہوم پیج پر واپس جائیں","Explore tools ↗":"ٹولز دیکھیں ↗"
   });
+  Object.assign(dictionary, {
+    "About — Obaid Doctrine Labs":"تعارف — عبید ڈاکٹرائن لیبز",
+    "Contact — Obaid Doctrine Labs":"رابطہ — عبید ڈاکٹرائن لیبز",
+    "Privacy Policy — Obaid Doctrine Labs":"رازداری کی پالیسی — عبید ڈاکٹرائن لیبز",
+    "Terms of Use — Obaid Doctrine Labs":"استعمال کی شرائط — عبید ڈاکٹرائن لیبز",
+    "Limitations — Obaid Doctrine Labs":"حدود — عبید ڈاکٹرائن لیبز",
+    "PDF Research & AI Q&A — Obaid Doctrine Labs":"پی ڈی ایف تحقیق اور اے آئی سوال جواب — عبید ڈاکٹرائن لیبز",
+    "Obaid Doctrine Labs — Tools for a clearer way forward":"عبید ڈاکٹرائن لیبز — بہتر ڈیجیٹل ٹولز"
+  });
   const originals = new WeakMap();
   let language = "en";
   function textNode(node) {
@@ -85,8 +94,6 @@
     document.documentElement.lang = language === "ur" ? "ur-PK" : "en";
     document.documentElement.dir = language === "ur" ? "rtl" : "ltr";
     document.body.classList.toggle("lang-ur", language === "ur");
-    const pageTitle = document.querySelector("title");
-    if (pageTitle) pageTitle.textContent = language === "ur" ? "عبید ڈاکٹرائن لیبز — ڈیجیٹل ٹولز" : "Obaid Doctrine Labs — Tools for a clearer way forward";
     try { localStorage.setItem("odl-language", language); } catch (_) {}
     translate(document);
     document.querySelectorAll("[data-language]").forEach(button => {

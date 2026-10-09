@@ -1,0 +1,24 @@
+name: Static site quality checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, upgrade/bilingual-ultra-pro]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: JavaScript and site integrity
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run static quality checks
+        run: node scripts/check-site.mjs

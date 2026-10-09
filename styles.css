@@ -90,3 +90,24 @@ footer{background-image:radial-gradient(ellipse at 90% 0%,rgba(110,153,92,.16),t
 .tool-card[data-category]:before{background:linear-gradient(90deg,var(--card-accent),transparent)}
 .tool-card[data-category]:hover{border-color:var(--card-accent);box-shadow:0 18px 38px rgba(50,30,90,.16);transform:translateY(-5px)}
 .tool-card.featured[data-category="writing"]{background:linear-gradient(135deg,#f2e8ff,#d7baff);border-color:#a879f0}
+
+/* English / Pakistani Urdu language controls and RTL refinements */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap');
+.language-switcher{display:inline-flex;align-items:center;gap:2px;padding:3px;border:1px solid #d5dfd1;border-radius:999px;background:#fff9;white-space:nowrap}
+.language-switcher button{min-height:34px;padding:6px 10px;border:0;border-radius:999px;background:transparent;color:var(--ink);font-size:11px;font-weight:700;cursor:pointer}
+.language-switcher button[aria-pressed="true"]{background:var(--forest);color:#fff}
+.language-switcher button:focus-visible{outline:2px solid #80a84b;outline-offset:2px}
+html[dir="rtl"] body{font-family:"Noto Nastaliq Urdu","Noto Sans Arabic",Tahoma,sans-serif;line-height:1.9}
+html[dir="rtl"] .site-header,html[dir="rtl"] .hero,html[dir="rtl"] .section-heading,html[dir="rtl"] .mission,html[dir="rtl"] .workspace-head{direction:rtl}
+html[dir="rtl"] .hero h1{letter-spacing:0;line-height:1.55}
+html[dir="rtl"] .hero h1 span{letter-spacing:0}
+html[dir="rtl"] .eyebrow{letter-spacing:0}
+html[dir="rtl"] .tool-card,html[dir="rtl"] .tool-workspace,html[dir="rtl"] .tool-label,html[dir="rtl"] .tool-help,html[dir="rtl"] .tool-output,html[dir="rtl"] .security-card{text-align:right}
+html[dir="rtl"] .tool-input,html[dir="rtl"] input,html[dir="rtl"] textarea,html[dir="rtl"] select{direction:rtl;text-align:right}
+html[dir="rtl"] input[type="number"],html[dir="rtl"] input[type="email"],html[dir="rtl"] input[type="url"],html[dir="rtl"] input[type="file"],html[dir="rtl"] code,html[dir="rtl"] pre{direction:ltr;text-align:left}
+html[dir="rtl"] .tool-grid,html[dir="rtl"] .signal-grid{direction:rtl}
+html[dir="rtl"] .site-header nav{gap:clamp(10px,2vw,25px)}
+html[dir="rtl"] .hero-trust,html[dir="rtl"] .hero-actions,html[dir="rtl"] .tool-actions{direction:rtl}
+html[dir="rtl"] .quiet-link span,html[dir="rtl"] .button span{display:inline-block;transform:scaleX(-1)}
+@media(max-width:760px){.language-switcher{width:max-content;max-width:100%;margin:8px 0}.site-header nav .language-switcher{align-self:flex-start}html[dir="rtl"] .hero{grid-template-columns:1fr}html[dir="rtl"] .hero h1{font-size:clamp(38px,10vw,60px)}}
+@media(prefers-reduced-motion:reduce){.language-switcher *{transition:none!important;animation:none!important}}

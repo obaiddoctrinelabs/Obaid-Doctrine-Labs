@@ -26,8 +26,9 @@
     if (language === "ur" && translated) {
       const leading = (originals.get(node).match(/^\s*/) || [""])[0];
       const trailing = (originals.get(node).match(/\s*$/) || [""])[0];
-      node.nodeValue = leading + translated + trailing;
-    } else node.nodeValue = originals.get(node);
+      const next = leading + translated + trailing;
+      if (node.nodeValue !== next) node.nodeValue = next;
+    } else if (node.nodeValue !== originals.get(node)) node.nodeValue = originals.get(node);
   }
   function translate(root) {
     if (root.nodeType === Node.TEXT_NODE) { textNode(root); return; }

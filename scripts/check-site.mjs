@@ -21,7 +21,7 @@ for (const file of htmlFiles) {
   const refs = [...html.matchAll(/(?:href|src)="([^"]+)"/g)].map((match) => match[1]);
   for (const ref of refs) {
     if (/^(?:https?:|mailto:|tel:|data:|javascript:|#|\/\/)/i.test(ref)) continue;
-    const local = decodeURIComponent(ref.split("#")[0].split("?")[0]);
+    const local = decodeURIComponent(ref.split("#")[0].split("?")[0]).replace(/^\\//, "");
     if (!local) continue;
     if (!fs.existsSync(path.resolve(root, path.dirname(file), local))) fail(`${file} references missing local asset: ${ref}`);
   }

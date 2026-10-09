@@ -74,3 +74,19 @@ footer{background-image:radial-gradient(ellipse at 90% 0%,rgba(110,153,92,.16),t
 .tool-card[data-category]:hover{border-color:var(--card-accent);box-shadow:0 16px 32px color-mix(in srgb,var(--card-accent) 14%,transparent)}
 .tool-card.featured[data-category="data"]{background:linear-gradient(145deg,#fff1dc,#ffe2bd);border-color:#eac18f}
 @media(max-width:760px){.tool-card[data-category]{box-shadow:0 5px 15px rgba(16,41,31,.035)}}
+
+/* Premium vibrant tool-card palette */
+.tool-card[data-category="writing"]{--card-bg:#eee3ff;--card-border:#c9a7ff;--card-accent:#7c3aed;--card-ink:#35106b;background:linear-gradient(135deg,#fff 0%,#eee3ff 58%,#d9c0ff 100%);border-color:var(--card-border)}
+.tool-card[data-category="productivity"]{--card-bg:#dceeff;--card-border:#9bcaff;--card-accent:#0878d1;--card-ink:#103f72;background:linear-gradient(135deg,#fff 0%,#dceeff 58%,#b9dcff 100%);border-color:var(--card-border)}
+.tool-card[data-category="everyday"]{--card-bg:#d9ffec;--card-border:#8ce0ba;--card-accent:#07865b;--card-ink:#064e3b;background:linear-gradient(135deg,#fff 0%,#d9ffec 58%,#aaf0d0 100%);border-color:var(--card-border)}
+.tool-card[data-category="data"]{--card-bg:#ffebce;--card-border:#f4bd72;--card-accent:#d66a08;--card-ink:#7c2d12;background:linear-gradient(135deg,#fff 0%,#ffebce 58%,#ffd49d 100%);border-color:var(--card-border)}
+.tool-card[data-category="writing"] .tool-icon{background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;border:0;box-shadow:0 7px 18px #7c3aed35}
+.tool-card[data-category="productivity"] .tool-icon{background:linear-gradient(135deg,#38bdf8,#2563eb);color:#fff;border:0;box-shadow:0 7px 18px #2563eb35}
+.tool-card[data-category="everyday"] .tool-icon{background:linear-gradient(135deg,#34d399,#059669);color:#fff;border:0;box-shadow:0 7px 18px #05966935}
+.tool-card[data-category="data"] .tool-icon{background:linear-gradient(135deg,#fb923c,#ea580c);color:#fff;border:0;box-shadow:0 7px 18px #ea580c35}
+.tool-card[data-category] .card-number{color:var(--card-accent);font-weight:800}
+.tool-card[data-category] h3{color:var(--card-ink)}
+.tool-card[data-category] .tool-open{color:var(--card-ink);border-top-color:var(--card-border)}
+.tool-card[data-category]:before{background:linear-gradient(90deg,var(--card-accent),transparent)}
+.tool-card[data-category]:hover{border-color:var(--card-accent);box-shadow:0 18px 38px rgba(50,30,90,.16);transform:translateY(-5px)}
+.tool-card.featured[data-category="writing"]{background:linear-gradient(135deg,#f2e8ff,#d7baff);border-color:#a879f0}

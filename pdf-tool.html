@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b22">
+  <meta name="description" content="Upload a text-based PDF and ask questions about its contents with Obaid Doctrine Labs AI.">
+  <title>PDF Research & AI Q&A — Obaid Doctrine Labs</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .pdf-page{max-width:900px;margin:0 auto;padding:48px 22px 80px}
+    .pdf-panel{background:var(--paper,#fff);border:1px solid rgba(16,43,34,.16);border-radius:18px;padding:clamp(20px,4vw,36px);box-shadow:0 16px 44px rgba(16,43,34,.07)}
+    .pdf-panel h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.04;letter-spacing:-.04em;margin:12px 0 16px}
+    .pdf-intro{max-width:680px;line-height:1.7;color:var(--muted,#52645d)}
+    .pdf-label{display:block;font-weight:700;margin:22px 0 8px}
+    .pdf-input{display:block;width:100%;box-sizing:border-box;border:1px solid #cbd5cf;border-radius:10px;padding:13px;background:#fff;color:#102b22;font:inherit}
+    .pdf-status{margin-top:14px;min-height:26px;white-space:pre-wrap;line-height:1.6;color:#244b3b}
+    .pdf-answer{white-space:pre-wrap;line-height:1.75;margin-top:18px;padding:18px;border-radius:12px;background:#f1f5f0;color:#172f25;overflow-wrap:anywhere}
+    .pdf-small{font-size:.9rem;line-height:1.6;color:#596a62;margin-top:12px}
+    .pdf-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .pdf-row .button{cursor:pointer}
+    .pdf-row button:disabled{opacity:.55;cursor:wait}
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Obaid Doctrine Labs home"><span class="brand-mark">OD<span>✳</span></span><span class="brand-name">OBAID DOCTRINE <b>LABS</b></span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <nav id="mainNav" aria-label="Main navigation"><a href="index.html#tools">Tool library</a><a href="about.html">Our principles</a><a href="privacy.html">Privacy</a><a class="nav-cta" href="contact.html">Share an idea <span>↗</span></a></nav>
+</header>
+<main id="main" class="pdf-page">
+  <div class="eyebrow"><span class="signal-dot"></span> ODL / RESEARCH TOOL 016</div>
+  <section class="pdf-panel">
+    <div class="section-kicker"><span>DOCUMENT ANALYSIS</span><span>PDF / AI Q&A</span></div>
+    <h1>Ask your PDF.<br><em>Find the useful bits.</em></h1>
+    <p class="pdf-intro">Upload a text-based PDF, let your browser extract its text, then ask a question. The extracted text is sent to the AI service only when you press the ask button. AI answers can be wrong, so check important details against the original document.</p>
+    <label class="pdf-label" for="pdfFile">1. Choose a PDF (maximum 12 MB)</label>
+    <input class="pdf-input" id="pdfFile" type="file" accept="application/pdf,.pdf">
+    <p class="pdf-small">Text-based PDFs are supported. Scanned/image-only PDFs may need OCR and may not produce readable text. Up to 40 pages and 12,000 characters are sent for analysis.</p>
+    <label class="pdf-label" for="pdfQuestion">2. Ask a question about the document</label>
+    <textarea class="pdf-input" id="pdfQuestion" rows="4" maxlength="1200" placeholder="For example: What are the main findings? Include the page number if available."></textarea>
+    <div class="pdf-row"><button class="button primary" id="askPdf" type="button" disabled>Ask about this PDF ↗</button><a class="button secondary" href="index.html#tools">Back to tool library</a></div>
+    <div id="pdfStatus" class="pdf-status" role="status" aria-live="polite">Choose a PDF to begin.</div>
+    <div id="pdfAnswer" class="pdf-answer" hidden></div>
+  </section>
+</main>
+<footer><a class="brand footer-brand" href="index.html"><span class="brand-mark">OD<span>✳</span></span><span class="brand-name">OBAID DOCTRINE <b>LABS</b></span></a><p>Independent tools for a more capable digital world.</p><div class="footer-links"><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div><small>© <span id="year"></span> Obaid Doctrine Labs. All rights reserved.</small></footer>
+<script src="app.js"></script>
+<script>
+(() => {
+  const fileInput = document.getElementById("pdfFile");
+  const questionInput = document.getElementById("pdfQuestion");
+  const askButton = document.getElementById("askPdf");
+  const status = document.getElementById("pdfStatus");
+  const answer = document.getElementById("pdfAnswer");
+  let extractedText = "";
+  let busy = false;
+  const setStatus = text => { status.textContent = text; };
+  fileInput.addEventListener("change", async () => {
+    extractedText = "";
+    answer.hidden = true;
+    askButton.disabled = true;
+    const file = fileInput.files && fileInput.files[0];
+    if (!file) { setStatus("Choose a PDF to begin."); return; }
+    if (file.type && file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) { setStatus("Please choose a PDF file."); return; }
+    if (file.size > 12 * 1024 * 1024) { setStatus("This file is larger than 12 MB. Choose a smaller PDF."); fileInput.value = ""; return; }
+    setStatus("Loading PDF reader and extracting text…");
+    try {
+      if (!window.pdfjsLib) {
+        await new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";
+          script.onload = resolve;
+          script.onerror = () => reject(new Error("The PDF reader could not load. Check your internet connection and try again."));
+          document.head.appendChild(script);
+        });
+      }
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+      const pdf = await window.pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
+      const pageCount = Math.min(pdf.numPages, 40);
+      const pages = [];
+      for (let i = 1; i <= pageCount; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        const pageText = content.items.map(item => item.str).join(" ").trim();
+        if (pageText) pages.push("Page " + i + ": " + pageText);
+      }
+      extractedText = pages.join("\n").slice(0, 12000);
+      if (!extractedText.trim()) {
+        setStatus("No selectable text was found. This may be a scanned/image-only PDF; use a text-based PDF or OCR it first.");
+        return;
+      }
+      askButton.disabled = false;
+      setStatus("Text extracted successfully from " + pageCount + " page(s). " + (pdf.numPages > 40 ? "Only the first 40 pages are included. " : "") + "Ask a question when ready.");
+    } catch (error) {
+      setStatus(error && error.message ? error.message : "Could not read this PDF. Try another text-based PDF.");
+    }
+  });
+  askButton.addEventListener("click", async () => {
+    if (busy) return;
+    if (!extractedText) { setStatus("Choose a PDF and wait for text extraction first."); return; }
+    const question = questionInput.value.trim();
+    if (!question) { setStatus("Please enter a question about the PDF."); questionInput.focus(); return; }
+    busy = true; askButton.disabled = true; askButton.textContent = "Working…"; answer.hidden = true;
+    setStatus("Asking the AI to answer from the extracted PDF text…");
+    try {
+      const response = await fetch("/api/ai", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ task: "pdfqa", text: extractedText, question })
+      });
+      let data;
+      try { data = await response.json(); } catch { throw new Error("The AI service returned an unreadable response. Please try again."); }
+      if (!response.ok) throw new Error(data.error || "AI request failed with status " + response.status + ".");
+      if (!data.result) throw new Error("The AI service returned no answer. Please try again.");
+      answer.textContent = data.result;
+      answer.hidden = false;
+      setStatus("Answer ready. Verify important claims and page references against your PDF.");
+    } catch (error) {
+      setStatus(error && error.message ? error.message : "Could not contact the AI service. Please try again.");
+    } finally {
+      busy = false; askButton.disabled = !extractedText; askButton.textContent = "Ask about this PDF ↗";
+    }
+  });
+})();
+</script>
+</body>
+</html>

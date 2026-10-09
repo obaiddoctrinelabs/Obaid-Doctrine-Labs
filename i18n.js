@@ -16,6 +16,32 @@
     "What are you writing?":"آپ کیا لکھ رہے ہیں؟","Audience":"قارئین","Tone":"اندازِ تحریر","Key points to include":"شامل کرنے کے اہم نکات","Create brief":"ہدایات بنائیں","Your text":"آپ کا متن","Result":"نتیجہ","Clean spaces":"اضافی خالی جگہیں صاف کریں","Sentence case":"جملے کے مطابق حروف","Copy result":"نتیجہ کاپی کریں","Category":"قسم","Amount":"مقدار","From":"سے","To":"تک","Convert":"تبدیل کریں","JSON input":"JSON اِن پٹ","Validate & format":"درستگی جانچیں اور فارمیٹ کریں","Minify":"مختصر بنائیں","Formatted JSON appears here":"فارمیٹ شدہ JSON یہاں نظر آئے گا","Task name":"کام کا نام","Estimated minutes":"متوقع منٹ","Add task":"کام شامل کریں","Clear list":"فہرست صاف کریں","Text to summarize or improve":"خلاصہ یا بہتری کے لیے متن","Summarize with AI":"اے آئی سے خلاصہ بنائیں","Improve with AI":"اے آئی سے بہتر بنائیں","Choose PDF (up to 12 MB)":"پی ڈی ایف منتخب کریں (زیادہ سے زیادہ 12 ایم بی)","Question about the PDF":"پی ڈی ایف کے بارے میں سوال","Ask about this PDF":"پی ڈی ایف کے بارے میں پوچھیں",
     "Please enter some text first.":"پہلے کچھ متن درج کریں۔","Copied to clipboard.":"متن کلپ بورڈ پر کاپی ہو گیا۔","There is no result to copy yet.":"کاپی کرنے کے لیے ابھی کوئی نتیجہ موجود نہیں۔","Enter a valid number.":"درست عدد درج کریں۔","Valid JSON.":"JSON درست ہے۔","Invalid JSON: ":"JSON درست نہیں: ","Task added.":"کام شامل ہو گیا۔","List cleared.":"فہرست صاف ہو گئی۔","Working…":"کام جاری ہے…","AI result ready. Please review it for accuracy.":"اے آئی کا نتیجہ تیار ہے۔ درستگی کے لیے اس کا جائزہ لیں۔","Could not reach the AI service.":"اے آئی سروس سے رابطہ نہیں ہو سکا۔"
   };
+  Object.assign(dictionary, {
+    "Let's make useful things.":"آئیے کارآمد چیزیں بنائیں۔",
+    "For questions, feedback or project enquiries, use the email address configured by the project owner.":"سوالات، تجاویز یا منصوبے سے متعلق رابطے کے لیے مالکِ منصوبہ کی فراہم کردہ ای میل استعمال کریں۔",
+    "Mailbox availability has not been independently verified.":"ای میل کی دستیابی کی آزادانہ تصدیق نہیں کی گئی۔",
+    "ABOUT THE PROJECT":"منصوبے کے بارے میں",
+    "Ideas Into Intelligent Tools.":"خیالات سے ذہین ٹولز تک۔",
+    "Our approach":"ہمارا طریقۂ کار",
+    "Build useful features before adding complexity.":"پیچیدگی بڑھانے سے پہلے مفید خصوصیات بنائیں۔",
+    "Clearly label available and planned tools.":"موجود اور منصوبہ بند ٹولز کی واضح نشاندہی کریں۔",
+    "Keep browser-based processing local where practical.":"جہاں ممکن ہو، پروسیسنگ براؤزر ہی میں رکھیں۔",
+    "Be honest about capabilities and limitations.":"صلاحیتوں اور حدود کے بارے میں دیانت دار رہیں۔",
+    "Current status":"موجودہ صورتحال",
+    "PRIVACY":"رازداری","Privacy Policy":"رازداری کی پالیسی",
+    "Important: This policy is a project draft and must be reviewed against the services actually enabled before public launch.":"اہم: یہ پالیسی ابتدائی مسودہ ہے؛ عوامی اجرا سے پہلے اسے فعال خدمات کے مطابق جانچنا ضروری ہے۔",
+    "Text entered into tools":"ٹولز میں درج کیا گیا متن",
+    "Hosting and external resources":"ہوسٹنگ اور بیرونی وسائل",
+    "Cookies and analytics":"کوکیز اور تجزیاتی خدمات",
+    "TERMS":"شرائط","Terms of Use":"استعمال کی شرائط","Your responsibility":"آپ کی ذمہ داری","No guarantees":"کوئی ضمانت نہیں","Updates":"تازہ کاریاں",
+    "RESPONSIBLE USE":"ذمہ دارانہ استعمال","Tool limitations":"ٹولز کی حدود","Before relying on a result":"نتیجے پر انحصار کرنے سے پہلے",
+    "DOCUMENT ANALYSIS":"دستاویز کا تجزیہ","PDF / AI Q&A":"پی ڈی ایف / اے آئی سوال جواب",
+    "Ask your PDF. Find the useful bits.":"اپنی پی ڈی ایف سے پوچھیں، اہم معلومات تلاش کریں۔",
+    "1. Choose a PDF (maximum 12 MB)":"۱۔ پی ڈی ایف منتخب کریں (زیادہ سے زیادہ ۱۲ ایم بی)",
+    "2. Ask a question about the document":"۲۔ دستاویز کے بارے میں سوال پوچھیں",
+    "Back to tool library":"ٹولز کی لائبریری پر واپس جائیں","Choose a PDF to begin.":"شروع کرنے کے لیے پی ڈی ایف منتخب کریں۔",
+    "← Back to home":"← ہوم پیج پر واپس جائیں","Explore tools ↗":"ٹولز دیکھیں ↗"
+  });
   const originals = new WeakMap();
   let language = "en";
   function textNode(node) {

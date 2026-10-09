@@ -42,8 +42,21 @@ export async function onRequestPost({ request, env }) {
     const output = result?.response || result?.output_text || "";
     if (!output) throw new Error("Empty model response");
     return new Response(JSON.stringify({ result: output }), { status: 200, headers: JSON_HEADERS });
-  } catch {
-    return new Response(JSON.stringify({ error: "The AI request failed or reached its free usage limit. Please try again later." }), { status: 502, headers: JSON_HEADERS });
+  } catch (error) {
+    // Keep detailed diagnostics in Cloudflare logs, but do not expose provider internals to visitors.
+    console.error("Workers AI request failed", {
+      message: error instanceof Error ? error.message : String(error),
+      model: "@cf/meta/llama-3.1-8b-instruct",
+      task
+    });
+    const detail = (error instanceof Error ? error.message : String(error)).toLowerCase();
+    if (detail.includes("quota") || detail.includes("rate limit") || detail.includes("too many requests") || detail.includes("exceeded")) {
+      return new Response(JSON.stringify({ error: "Cloudflare Workers AI usage limit or rate limit reached. Check Workers AI usage in your Cloudflare dashboard and try again later." }), { status: 429, headers: JSON_HEADERS });
+    }
+    if (detail.includes("model") && (detail.includes("not found") || detail.includes("does not exist") || detail.includes("unknown"))) {
+      return new Response(JSON.stringify({ error: "The configured AI model is unavailable. Check the model name in functions/api/ai.js and deploy again." }), { status: 503, headers: JSON_HEADERS });
+    }
+    return new Response(JSON.stringify({ error: "Cloudflare Workers AI could not complete the request. Check the AI binding, model availability, and Workers AI logs in Cloudflare." }), { status: 502, headers: JSON_HEADERS });
   }
 }
 

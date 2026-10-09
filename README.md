@@ -11,14 +11,13 @@ A responsive static website starter for Obaid Doctrine Labs, built with plain HT
 - `.gitignore` — excludes common local build artifacts and environment files
 
 ## Current status
-This is an early static starter. Tool cards marked “Coming soon” are not interactive yet. No generative AI API is connected. Review the privacy and terms drafts before a public launch.
+This is a static HTML/CSS/JavaScript site with browser-based utilities and optional server-side AI features. The AI writing, summary and PDF Q&A features use `functions/api/ai.js` and require a working Cloudflare Pages deployment plus a Workers AI binding named `AI`. Verify the live deployment and review the privacy and terms drafts before a public launch.
 
 ## Deploy with Cloudflare Pages
-1. Open Cloudflare Dashboard and go to Workers & Pages.
-2. Create a Pages project and connect this GitHub repository.
-3. Choose the `main` branch.
-4. For this plain HTML site, leave the build command empty and set the output directory to `.` (the repository root).
-5. Deploy, then open the provided Pages URL to test the homepage and all navigation links.
+1. Open the existing Cloudflare Pages project in Workers & Pages.
+2. Confirm the GitHub repository `obaiddoctrinelabs/Obaid-Doctrine-Labs` is connected to the `main` branch.
+3. For this plain HTML site, leave the build command empty and set the output directory to `.` (the repository root).
+4. Save settings and confirm a successful deployment before testing the provided Pages URL. Avoid creating a duplicate project if the existing Pages project is already live.
 
 Keep the repository private if you prefer. Do not put passwords, API keys, or other secrets in frontend files.
 
@@ -26,7 +25,7 @@ Keep the repository private if you prefer. Do not put passwords, API keys, or ot
 
 The site remains usable without AI. Browser-only tools such as the text formatter, unit converter, JSON helper, planner, budget calculator, CSV helper, cyber-safety checklist, and business calculators do not need an AI API key.
 
-To enable the AI Summary and PDF Q&A features:
+To enable the AI Writing & Summary and PDF Q&A features:
 1. In Cloudflare, open **Workers & Pages → Obaid Doctrine Labs → Settings → Functions** (or **Settings → Bindings**, depending on the dashboard layout).
 2. Add a **Workers AI** binding named exactly `AI` and save.
 3. Deploy this version of the site. The Pages Function at `functions/api/ai.js` serves `POST /api/ai`; the model runs server-side so no API token is exposed in browser JavaScript.

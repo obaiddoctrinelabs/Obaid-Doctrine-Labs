@@ -34,9 +34,9 @@
     if (root.nodeType !== Node.ELEMENT_NODE && root.nodeType !== Node.DOCUMENT_NODE) return;
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
     let n; while ((n = walker.nextNode())) textNode(n);
-    if (root.nodeType === Node.ELEMENT_NODE) {
+    if (root.nodeType === Node.ELEMENT_NODE || root.nodeType === Node.DOCUMENT_NODE) {
       ["placeholder","aria-label","title"].forEach(attr => {
-        if (!root.hasAttribute(attr)) return;
+        if (root.nodeType !== Node.ELEMENT_NODE || !root.hasAttribute(attr)) return;
         const key = "attr:" + attr;
         if (!root.dataset[key.replace(":","")]) root.dataset[key.replace(":","")] = root.getAttribute(attr);
         const original = root.dataset[key.replace(":","")];

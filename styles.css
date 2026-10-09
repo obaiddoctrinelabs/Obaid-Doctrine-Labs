@@ -54,3 +54,23 @@ body{background-image:radial-gradient(ellipse at 12% 7%,rgba(217,242,125,.11),tr
 footer{background-image:radial-gradient(ellipse at 90% 0%,rgba(110,153,92,.16),transparent 36%)}
 @media(max-width:760px){.site-header{box-shadow:0 3px 16px rgba(16,41,31,.045)}.hero-visual{filter:none}.signal-cell:hover,.tool-card:hover{transform:none}.tool-card:hover{box-shadow:0 8px 18px rgba(16,41,31,.07)}}
 @media(prefers-reduced-motion:reduce){.signal-cell,.tool-card,.tool-icon,.brand-mark,.nav-cta,.button.primary{transition:none}}
+
+
+/* Distinct, coordinated colors for each tool card */
+.tool-card[data-category]{background:#fff;border-color:var(--card-border,#e5e9e0)}
+.tool-card[data-category="writing"]{--card-bg:#f2ebff;--card-border:#ded0fa;--card-accent:#7852b8;--card-ink:#42256d}
+.tool-card[data-category="productivity"]{--card-bg:#e7f2ff;--card-border:#c8def8;--card-accent:#3478bd;--card-ink:#204b78}
+.tool-card[data-category="everyday"]{--card-bg:#e8f5e9;--card-border:#cbe6ce;--card-accent:#328052;--card-ink:#205b38}
+.tool-card[data-category="data"]{--card-bg:#fff0df;--card-border:#f1d5b5;--card-accent:#bd6a27;--card-ink:#80431b}
+.tool-card[data-category="writing"]{background:linear-gradient(145deg,#fbf8ff 0%,var(--card-bg) 100%)}
+.tool-card[data-category="productivity"]{background:linear-gradient(145deg,#f7fbff 0%,var(--card-bg) 100%)}
+.tool-card[data-category="everyday"]{background:linear-gradient(145deg,#f8fff8 0%,var(--card-bg) 100%)}
+.tool-card[data-category="data"]{background:linear-gradient(145deg,#fffaf3 0%,var(--card-bg) 100%)}
+.tool-card[data-category] .tool-icon{background:var(--card-bg);color:var(--card-accent);border:1px solid var(--card-border)}
+.tool-card[data-category] .card-number{color:var(--card-accent)}
+.tool-card[data-category] h3{color:var(--card-ink)}
+.tool-card[data-category] .tool-open{color:var(--card-ink);border-top-color:var(--card-border)}
+.tool-card[data-category]:before{background:linear-gradient(90deg,var(--card-accent),transparent)}
+.tool-card[data-category]:hover{border-color:var(--card-accent);box-shadow:0 16px 32px color-mix(in srgb,var(--card-accent) 14%,transparent)}
+.tool-card.featured[data-category="data"]{background:linear-gradient(145deg,#fff1dc,#ffe2bd);border-color:#eac18f}
+@media(max-width:760px){.tool-card[data-category]{box-shadow:0 5px 15px rgba(16,41,31,.035)}}

@@ -64,6 +64,7 @@
     <div class="empty-state" id="emptyState" hidden><span>⌕</span><h3>No matching tools yet.</h3><p>Try another keyword or choose a different category.</p><button id="clearFilters" class="quiet-button">Clear search and filters ↗</button></div>
     <p class="section-footnote"><span>✳</span> Privacy note: these starter tools process input in your browser. Some labels describe the task area, not a connected AI service.</p>
   </section>
+  <section class="workspace" id="workspace" hidden><div class="workspace-head"><div><div class="eyebrow">TOOL WORKSPACE</div><h2 id="workspaceTitle">Choose a tool</h2></div><button class="close-workspace" id="closeWorkspace" type="button">Close ✕</button></div><div id="workspaceBody"></div><p class="tool-message" id="toolMessage" role="status" aria-live="polite"></p></section>
   <section class="mission"><div class="mission-symbol">✳</div><div><div class="eyebrow">OUR PRINCIPLE / 001</div><h2>Technology should feel useful, not complicated.</h2><p>We believe good digital experiences are clear, approachable and honest about what they can do.</p></div><a href="about.html" class="text-link">Read our principles <span>↗</span></a></section>
   <section class="bottom-cta"><div class="cta-orbit">✳</div><div class="eyebrow">THE NEXT GOOD IDEA STARTS HERE</div><h2>Have a useful idea?</h2><p>Tell us what would make your everyday work easier. The best tools start with a real need.</p><a class="button primary" href="contact.html">Share your idea <span>↗</span></a><span class="cta-index">OBD / LAB NOTES — OPEN INVITATION</span></section>
 </main>
@@ -82,7 +83,7 @@
     let shown=0;
     cards.forEach(card=>{
       const category=card.dataset.category||'';
-      const matchCategory=filter==='all'||category===filter||(filter==='productivity'&&category==='writing');
+      const matchCategory=filter==='all'||category===filter;
       const matchText=!query||card.innerText.toLowerCase().includes(query);
       const visible=matchCategory&&matchText;
       card.hidden=!visible;

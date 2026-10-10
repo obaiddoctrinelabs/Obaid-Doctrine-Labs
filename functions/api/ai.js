@@ -2,6 +2,7 @@
 // Enable the Workers AI binding named AI in the Pages project before using this endpoint.
 const MAX_TEXT = 12000;
 const MAX_QUESTION = 2000;
+const MAX_BODY_BYTES = 200_000;
 const JSON_HEADERS = { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" };
 
 export async function onRequestPost({ request, env }) {
@@ -14,9 +15,23 @@ export async function onRequestPost({ request, env }) {
   if (!env.AI || typeof env.AI.run !== "function") {
     return new Response(JSON.stringify({ error: "AI is not enabled yet. In Cloudflare Pages, add a Workers AI binding named AI, then redeploy." }), { status: 503, headers: JSON_HEADERS });
   }
+  const declaredLength = Number(request.headers.get("content-length") || 0);
+  if (declaredLength > MAX_BODY_BYTES) {
+    return new Response(JSON.stringify({ error: "Request body is too large. Keep the total request under 200 KB." }), { status: 413, headers: JSON_HEADERS });
+  }
+  let rawBody;
+  try { rawBody = await request.text(); } catch {
+    return new Response(JSON.stringify({ error: "Could not read request body." }), { status: 400, headers: JSON_HEADERS });
+  }
+  if (new TextEncoder().encode(rawBody).byteLength > MAX_BODY_BYTES) {
+    return new Response(JSON.stringify({ error: "Request body is too large. Keep the total request under 200 KB." }), { status: 413, headers: JSON_HEADERS });
+  }
   let body;
-  try { body = await request.json(); } catch {
+  try { body = JSON.parse(rawBody); } catch {
     return new Response(JSON.stringify({ error: "Please send valid JSON." }), { status: 400, headers: JSON_HEADERS });
+  }
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return new Response(JSON.stringify({ error: "The request must be a JSON object." }), { status: 400, headers: JSON_HEADERS });
   }
   const task = String(body.task || "");
   const text = String(body.text || "").trim();

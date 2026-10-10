@@ -21,9 +21,14 @@ for (const file of htmlFiles) {
   const refs = [...html.matchAll(/(?:href|src)="([^"]+)"/g)].map((match) => match[1]);
   for (const ref of refs) {
     if (/^(?:https?:|mailto:|tel:|data:|javascript:|#|\/\/)/i.test(ref)) continue;
-    const local = decodeURIComponent(ref.split("#")[0].split("?")[0]).replace(/^\\//, "");
+    let local;
+    try { local = decodeURIComponent(ref.split("#")[0].split("?")[0]); }
+    catch { fail(`${file} has an invalid encoded local asset reference: ${ref}`); continue; }
     if (!local) continue;
-    if (!fs.existsSync(path.resolve(root, path.dirname(file), local))) fail(`${file} references missing local asset: ${ref}`);
+    const resolved = local.startsWith("/")
+      ? path.resolve(root, local.slice(1))
+      : path.resolve(root, path.dirname(file), local);
+    if (!fs.existsSync(resolved)) fail(`${file} references missing local asset: ${ref}`);
   }
 }
 if (!process.exitCode) pass(`Local HTML asset references checked in ${htmlFiles.length} HTML files`);

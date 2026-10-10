@@ -15,7 +15,7 @@
     if (!text.trim()) { message("Please enter some text first."); return; }
     const button = $(buttonId); button.disabled = true; button.textContent = "Working…"; message("Sending text securely to the server-side AI service…");
     try {
-      const response = await fetch("/api/ai", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ task, text, question }) });
+      const response = await fetch("/api/ai", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ task, text, question, language: document.documentElement.lang === "ur-PK" ? "ur" : "en" }) });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "AI request failed.");
       $(outputId).hidden = false; $(outputId).textContent = data.result; message("AI result ready. Please review it for accuracy.");

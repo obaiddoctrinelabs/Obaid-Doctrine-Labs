@@ -105,8 +105,8 @@
       return;
     }
     const translated = dictionary[trimmed];
-    const leading = (source.match(/^\\s*/) || [""])[0];
-    const trailing = (source.match(/\\s*$/) || [""])[0];
+    const leading = (source.match(/^\s*/) || [""])[0];
+    const trailing = (source.match(/\s*$/) || [""])[0];
     const next = language === "ur" && translated ? leading + translated + trailing : source;
     if (node.nodeValue !== next) node.nodeValue = next;
     state.rendered = next;

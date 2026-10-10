@@ -84,19 +84,32 @@
     "AI Research & PDF Q&A":"اے آئی تحقیق اور پی ڈی ایف سوال جواب","Matching passages (not AI-generated answers):\n\n":"متعلقہ اقتباسات (اے آئی کے تیار کردہ جوابات نہیں):\n\n","Potential warning signs:\n• ":"ممکنہ خطرے کی علامات:\n• ","\n\nDo not click, pay, or share codes. Verify through an official channel you find independently.":"\n\nلنک نہ کھولیں، ادائیگی نہ کریں اور کوڈز شیئر نہ کریں۔ خود تلاش کیے گئے سرکاری ذریعے سے تصدیق کریں۔",
     "Income (PKR)":"آمدن (PKR)","Budget limit (PKR)":"بجٹ کی حد (PKR)","Expense description":"اخراجات کی تفصیل","Expense amount (PKR)":"اخراجات کی رقم (PKR)","Clean whitespace":"اضافی خالی جگہیں صاف کریں","Download result as CSV":"نتیجہ CSV میں ڈاؤن لوڈ کریں","Review warning signs":"خطرے کی علامات دیکھیں","Calculate profit":"منافع کا حساب لگائیں","Estimate system size":"سسٹم کے سائز کا اندازہ لگائیں","Create checklist":"چیک لسٹ بنائیں","Calculate farm estimate":"زرعی تخمینہ لگائیں"
   });
+  // Track both source text and the last value rendered by this translator.
+  // Tool outputs often update existing text nodes; treating those updates as new
+  // source text prevents the observer from reverting dynamic results to stale text.
   const originals = new WeakMap();
   let language = "en";
   function textNode(node) {
-    if (!originals.has(node)) originals.set(node, node.nodeValue);
-    const original = originals.get(node).trim();
-    if (!original) return;
-    const translated = dictionary[original];
-    if (language === "ur" && translated) {
-      const leading = (originals.get(node).match(/^\s*/) || [""])[0];
-      const trailing = (originals.get(node).match(/\s*$/) || [""])[0];
-      const next = leading + translated + trailing;
-      if (node.nodeValue !== next) node.nodeValue = next;
-    } else if (node.nodeValue !== originals.get(node)) node.nodeValue = originals.get(node);
+    let state = originals.get(node);
+    if (!state) {
+      state = { source: node.nodeValue, rendered: node.nodeValue };
+      originals.set(node, state);
+    } else if (node.nodeValue !== state.rendered) {
+      // Another script changed this node (for example, a calculator result).
+      state.source = node.nodeValue;
+    }
+    const source = state.source;
+    const trimmed = source.trim();
+    if (!trimmed) {
+      state.rendered = source;
+      return;
+    }
+    const translated = dictionary[trimmed];
+    const leading = (source.match(/^\\s*/) || [""])[0];
+    const trailing = (source.match(/\\s*$/) || [""])[0];
+    const next = language === "ur" && translated ? leading + translated + trailing : source;
+    if (node.nodeValue !== next) node.nodeValue = next;
+    state.rendered = next;
   }
   function translate(root) {
     if (root.nodeType === Node.TEXT_NODE) { textNode(root); return; }

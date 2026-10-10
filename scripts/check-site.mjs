@@ -44,6 +44,12 @@ for (const marker of ['document.documentElement.lang', 'document.documentElement
 }
 if (!process.exitCode) pass("English/Urdu language, direction, and persistence markers present");
 
+const aiEndpoint = fs.existsSync(path.join(root, "functions/api/ai.js")) ? fs.readFileSync(path.join(root, "functions/api/ai.js"), "utf8") : "";
+for (const marker of ["MAX_TEXT = 12000", "MAX_QUESTION = 2000", "submitted text and PDF content as untrusted data"]) {
+  if (!aiEndpoint.includes(marker)) fail(`AI endpoint safety marker missing: ${marker}`);
+}
+if (!process.exitCode) pass("AI endpoint input limits and untrusted-content guard present");
+
 if (process.exitCode) {
   console.error("\nQuality checks failed. Fix these errors before merging.");
 } else {

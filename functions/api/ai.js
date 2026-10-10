@@ -20,6 +20,7 @@ export async function onRequestPost({ request, env }) {
   const task = String(body.task || "");
   const text = String(body.text || "").trim();
   const question = String(body.question || "").trim();
+  const language = body.language === "ur" ? "ur" : "en";
   if (!["writing", "summary", "pdfqa"].includes(task)) return new Response(JSON.stringify({ error: "Unsupported task." }), { status: 400, headers: JSON_HEADERS });
   if (!text || text.length > MAX_TEXT) return new Response(JSON.stringify({ error: "Enter text between 1 and 12,000 characters." }), { status: 400, headers: JSON_HEADERS });
   if (task === "pdfqa" && !question) return new Response(JSON.stringify({ error: "Enter a question about the PDF." }), { status: 400, headers: JSON_HEADERS });
@@ -28,9 +29,12 @@ export async function onRequestPost({ request, env }) {
     summary: "Summarize the supplied text faithfully. Give a concise summary and key points. Preserve important numbers and caveats; do not add unsupported claims.",
     pdfqa: "Answer the question using only the supplied PDF text. If the answer is not present, say so. Cite page labels such as Page 2 when available. Do not guess."
   };
-  const prompt = task === "pdfqa"
+  const outputLanguage = language === "ur"
+    ? "Respond in clear Pakistani Urdu (اردو). Keep technical terms, code, product names, and proper nouns in their original form when useful. Do not switch to English except where needed."
+    : "Respond in English.";
+  const prompt = outputLanguage + "\n" + (task === "pdfqa"
     ? instructions[task] + "\nQuestion: " + question + "\nPDF text:\n" + text
-    : instructions[task] + "\nUser text:\n" + text;
+    : instructions[task] + "\nUser text:\n" + text);
   try {
     const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct-fp8", {
       messages: [

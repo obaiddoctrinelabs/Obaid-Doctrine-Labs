@@ -148,6 +148,10 @@
   const originals = new WeakMap();
   let language = "en";
   function textNode(node) {
+    // Never translate executable code, CSS, or user-editable content.
+    // Mutating these nodes can corrupt page behavior while switching languages.
+    const parent = node.parentElement;
+    if (parent && parent.closest("script,style,noscript,textarea,code,pre")) return;
     let state = originals.get(node);
     if (!state) {
       state = { source: node.nodeValue, rendered: node.nodeValue };

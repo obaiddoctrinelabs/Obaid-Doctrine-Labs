@@ -6,7 +6,7 @@ const root = process.cwd();
 const fail = (message) => { console.error("FAIL:", message); process.exitCode = 1; };
 const pass = (message) => console.log("PASS:", message);
 
-const jsFiles = ["app.js", "tools-extra.js", "ai-tools.js", "i18n.js"];
+const jsFiles = ["app.js", "tools-extra.js", "ai-tools.js", "i18n.js", "functions/api/ai.js"];
 for (const file of jsFiles) {
   if (!fs.existsSync(path.join(root, file))) { fail(`Missing JavaScript file: ${file}`); continue; }
   const result = spawnSync(process.execPath, ["--check", file], { cwd: root, encoding: "utf8" });

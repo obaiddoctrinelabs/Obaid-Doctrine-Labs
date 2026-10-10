@@ -87,7 +87,7 @@
   // Only use longer phrases or phrases with clear separators for partial matching.
   // This covers dynamic outputs containing numbers without translating arbitrary user text word-by-word.
   const partialTranslations = Object.entries(dictionary)
-    .filter(([source]) => source.length >= 12 && /[A-Za-z]/.test(source) && /[\\s.:—…·\\n]/.test(source))
+    .filter(([source]) => source.length >= 12 && /[A-Za-z]/.test(source) && /[\s.:—…·\n]/.test(source))
     .sort((a, b) => b[0].length - a[0].length);
   // Track both source text and the last value rendered by this translator.
   // Tool outputs often update existing text nodes; treating those updates as new
@@ -110,8 +110,8 @@
       return;
     }
     const translated = dictionary[trimmed];
-    const leading = (source.match(/^\\s*/) || [""])[0];
-    const trailing = (source.match(/\\s*$/) || [""])[0];
+    const leading = (source.match(/^\s*/) || [""])[0];
+    const trailing = (source.match(/\s*$/) || [""])[0];
     let next = source;
     if (language === "ur") {
       if (translated) {

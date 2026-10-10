@@ -111,3 +111,10 @@ html[dir="rtl"] .hero-trust,html[dir="rtl"] .hero-actions,html[dir="rtl"] .tool-
 html[dir="rtl"] .quiet-link span,html[dir="rtl"] .button span{display:inline-block;transform:scaleX(-1)}
 @media(max-width:760px){.language-switcher{width:max-content;max-width:100%;margin:8px 0}.site-header nav .language-switcher{align-self:flex-start}html[dir="rtl"] .hero{grid-template-columns:1fr}html[dir="rtl"] .hero h1{font-size:clamp(38px,10vw,60px)}}
 @media(prefers-reduced-motion:reduce){.language-switcher *{transition:none!important;animation:none!important}}
+
+
+/* Language control must remain visible outside the collapsed mobile navigation. */
+.site-header>.language-switcher{display:inline-flex!important;align-items:center;gap:3px;flex:0 0 auto;width:max-content;max-width:none;margin:0;padding:3px;border:1px solid #d7e0d2;border-radius:7px;background:#fff;position:relative;z-index:25}
+.site-header>.language-switcher button{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:6px 9px;border:0;border-radius:4px;background:transparent;color:#315a3a;font-size:12px;font-weight:700;white-space:nowrap;cursor:pointer}
+.site-header>.language-switcher button[aria-pressed="true"]{background:#123728;color:#fff}
+@media(max-width:760px){.site-header{gap:8px;padding-left:10px;padding-right:10px}.site-header>.brand{min-width:0;flex:1 1 auto;gap:6px}.site-header>.brand-name{font-size:9px}.site-header>.language-switcher{order:2}.site-header>.menu-toggle{display:block;order:3;flex:0 0 auto;padding:4px}.site-header>nav{order:4}.site-header>.language-switcher button{min-height:32px;padding:5px 7px;font-size:11px}}

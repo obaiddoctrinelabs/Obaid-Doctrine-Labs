@@ -227,7 +227,8 @@
         switcher.setAttribute("role", "group");
         switcher.setAttribute("aria-label", "Language");
         switcher.innerHTML = '<button type="button" data-language="en" aria-pressed="true">English</button><button type="button" data-language="ur" aria-pressed="false">اردو</button>';
-        nav.appendChild(switcher);
+        // Keep the language control visible in the header, outside the mobile menu.
+        nav.parentElement.appendChild(switcher);
         switcher.addEventListener("click", event => {
           const button = event.target.closest("[data-language]");
           if (button) setLanguage(button.dataset.language);

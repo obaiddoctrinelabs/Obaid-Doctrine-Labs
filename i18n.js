@@ -84,6 +84,11 @@
     "AI Research & PDF Q&A":"اے آئی تحقیق اور پی ڈی ایف سوال جواب","Matching passages (not AI-generated answers):\n\n":"متعلقہ اقتباسات (اے آئی کے تیار کردہ جوابات نہیں):\n\n","Potential warning signs:\n• ":"ممکنہ خطرے کی علامات:\n• ","\n\nDo not click, pay, or share codes. Verify through an official channel you find independently.":"\n\nلنک نہ کھولیں، ادائیگی نہ کریں اور کوڈز شیئر نہ کریں۔ خود تلاش کیے گئے سرکاری ذریعے سے تصدیق کریں۔",
     "Income (PKR)":"آمدن (PKR)","Budget limit (PKR)":"بجٹ کی حد (PKR)","Expense description":"اخراجات کی تفصیل","Expense amount (PKR)":"اخراجات کی رقم (PKR)","Clean whitespace":"اضافی خالی جگہیں صاف کریں","Download result as CSV":"نتیجہ CSV میں ڈاؤن لوڈ کریں","Review warning signs":"خطرے کی علامات دیکھیں","Calculate profit":"منافع کا حساب لگائیں","Estimate system size":"سسٹم کے سائز کا اندازہ لگائیں","Create checklist":"چیک لسٹ بنائیں","Calculate farm estimate":"زرعی تخمینہ لگائیں"
   });
+  // Only use longer phrases or phrases with clear separators for partial matching.
+  // This covers dynamic outputs containing numbers without translating arbitrary user text word-by-word.
+  const partialTranslations = Object.entries(dictionary)
+    .filter(([source]) => source.length >= 12 && /[A-Za-z]/.test(source) && /[\\s.:—…·\\n]/.test(source))
+    .sort((a, b) => b[0].length - a[0].length);
   // Track both source text and the last value rendered by this translator.
   // Tool outputs often update existing text nodes; treating those updates as new
   // source text prevents the observer from reverting dynamic results to stale text.
@@ -105,9 +110,21 @@
       return;
     }
     const translated = dictionary[trimmed];
-    const leading = (source.match(/^\s*/) || [""])[0];
-    const trailing = (source.match(/\s*$/) || [""])[0];
-    const next = language === "ur" && translated ? leading + translated + trailing : source;
+    const leading = (source.match(/^\\s*/) || [""])[0];
+    const trailing = (source.match(/\\s*$/) || [""])[0];
+    let next = source;
+    if (language === "ur") {
+      if (translated) {
+        next = leading + translated + trailing;
+      } else {
+        // Translate known interface phrases inside dynamic calculator/status
+        // outputs too, while leaving user-entered values and technical tokens intact.
+        next = source;
+        for (const [english, urdu] of partialTranslations) {
+          if (next.includes(english)) next = next.split(english).join(urdu);
+        }
+      }
+    }
     if (node.nodeValue !== next) node.nodeValue = next;
     state.rendered = next;
   }

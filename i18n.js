@@ -218,22 +218,28 @@
     });
   }
   function mount() {
-    if (!document.querySelector("[data-language-switcher]")) {
-      const nav = document.getElementById("mainNav");
-      if (nav) {
-        const switcher = document.createElement("div");
-        switcher.className = "language-switcher";
-        switcher.setAttribute("data-language-switcher", "");
-        switcher.setAttribute("role", "group");
-        switcher.setAttribute("aria-label", "Language");
-        switcher.innerHTML = '<button type="button" data-language="en" aria-pressed="true">English</button><button type="button" data-language="ur" aria-pressed="false">اردو</button>';
-        // Keep the language control visible in the header, outside the mobile menu.
-        nav.parentElement.appendChild(switcher);
-        switcher.addEventListener("click", event => {
-          const button = event.target.closest("[data-language]");
-          if (button) setLanguage(button.dataset.language);
-        });
-      }
+    let switcher = document.querySelector("[data-language-switcher]");
+    const nav = document.getElementById("mainNav");
+    const header = document.querySelector(".site-header");
+    if (!switcher && header) {
+      switcher = document.createElement("div");
+      switcher.className = "language-switcher";
+      switcher.setAttribute("data-language-switcher", "");
+      switcher.setAttribute("role", "group");
+      switcher.setAttribute("aria-label", "Language");
+      switcher.innerHTML = '<button type="button" data-language="en" aria-pressed="true">English</button><button type="button" data-language="ur" aria-pressed="false">اردو</button>';
+      // Place beside the menu toggle so it remains visible on narrow screens.
+      const menuToggle = document.getElementById("menuToggle");
+      if (menuToggle && menuToggle.parentElement === header) header.insertBefore(switcher, menuToggle);
+      else if (nav && nav.parentElement === header) header.insertBefore(switcher, nav);
+      else header.appendChild(switcher);
+    }
+    if (switcher && !switcher.dataset.languageHandlerAttached) {
+      switcher.dataset.languageHandlerAttached = "true";
+      switcher.addEventListener("click", event => {
+        const button = event.target.closest("[data-language]");
+        if (button) setLanguage(button.dataset.language);
+      });
     }
     let saved = "en";
     try { saved = localStorage.getItem("odl-language") || "en"; } catch (_) {}

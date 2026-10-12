@@ -118,3 +118,20 @@ html[dir="rtl"] .quiet-link span,html[dir="rtl"] .button span{display:inline-blo
 .site-header>.language-switcher button{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:6px 9px;border:0;border-radius:4px;background:transparent;color:#315a3a;font-size:12px;font-weight:700;white-space:nowrap;cursor:pointer}
 .site-header>.language-switcher button[aria-pressed="true"]{background:#123728;color:#fff}
 @media(max-width:760px){.site-header{gap:8px;padding-left:10px;padding-right:10px}.site-header>.brand{min-width:0;flex:1 1 auto;gap:6px}.site-header>.brand-name{font-size:9px}.site-header>.language-switcher{order:2}.site-header>.menu-toggle{display:block;order:3;flex:0 0 auto;padding:4px}.site-header>nav{order:4}.site-header>.language-switcher button{min-height:32px;padding:5px 7px;font-size:11px}}
+
+
+/* Emergency visibility recovery: keep the static page readable if an injected
+   style or browser translation layer accidentally hides the document shell. */
+html, body { min-height: 100%; }
+body > .site-header,
+body > main,
+body > footer {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+body > main { display: block !important; }
+body > .site-header { display: flex !important; }
+body > footer { display: flex !important; }
+body > main > section { visibility: visible !important; opacity: 1 !important; }
+.skip { position: absolute; left: -10000px; top: 8px; }
+.skip:focus { left: 8px; }

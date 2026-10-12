@@ -22,3 +22,22 @@ jobs:
           node-version: 20
       - name: Run static quality checks
         run: node scripts/check-site.mjs
+
+  browser-smoke:
+    name: Mobile English and Urdu browser smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Start static site
+        run: python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/odl-http.log 2>&1 &
+      - name: Test mobile homepage and language switch
+        run: node scripts/browser-smoke.mjs

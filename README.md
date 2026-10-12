@@ -1,46 +1,50 @@
 # Obaid Doctrine Labs
 
-A responsive static website starter for Obaid Doctrine Labs, built with plain HTML, CSS and JavaScript.
+A responsive static HTML/CSS/JavaScript website for Obaid Doctrine Labs. The project is being upgraded in place; this repository is the source of truth.
 
-## Website files
+## Existing website files
+
 - `index.html` — homepage and tool catalogue
 - `styles.css` — responsive layout and styling
-- `app.js` — mobile navigation and footer year
+- `app.js`, `tools-extra.js`, `ai-tools.js` — client-side interactions and tools
+- `i18n.js` — English/Pakistani Urdu translations and RTL direction handling
 - `about.html`, `contact.html`, `privacy.html`, `terms.html`, `limitations.html` — project and policy pages
-- `favicon.svg` — site icon
-- `.gitignore` — excludes common local build artifacts and environment files
+- `scripts/check-site.mjs` — static JavaScript, asset-reference, localization-marker and safety-marker checks
+- `functions/api/ai.js` — legacy server-side AI endpoint written for a Cloudflare Pages Functions runtime; it is not executable on GitHub Pages and is not part of the approved target hosting plan
 
-## Current status
-This is a static HTML/CSS/JavaScript site with browser-based utilities and optional server-side AI features. The AI writing, summary and PDF Q&A features use `functions/api/ai.js` and require a working Cloudflare Pages deployment plus a Workers AI binding named `AI`. Verify the live deployment and review the privacy and terms drafts before a public launch.
+## Approved hosting direction
 
-## Deploy with Cloudflare Pages
-1. Open the existing Cloudflare Pages project in Workers & Pages.
-2. Confirm the GitHub repository `obaiddoctrinelabs/Obaid-Doctrine-Labs` is connected to the `main` branch.
-3. For this plain HTML site, leave the build command empty and set the output directory to `.` (the repository root).
-4. Save settings and confirm a successful deployment before testing the provided Pages URL. Avoid creating a duplicate project if the existing Pages project is already live.
+- Static frontend: GitHub Pages.
+- Backend: a separate provider only when a real server-side feature requires it. Provider selection must be based on verified current free-tier limits and secret-management support.
+- Cloudflare is not part of the approved hosting or deployment plan.
+- No paid service or upgrade may be enabled without the owner's explicit permission.
 
-Keep the repository private if you prefer. Do not put passwords, API keys, or other secrets in frontend files.
+GitHub Pages only serves static files. It does not run server-side functions, so `functions/api/ai.js` must not be expected to work on GitHub Pages. AI writing, summarization and AI PDF Q&A must be treated as unavailable until a compatible separate backend and its AI provider are configured and tested. Do not substitute fabricated AI responses or expose API keys in browser code.
 
-## Optional AI features (Cloudflare Workers AI)
+## GitHub Pages setup
 
-The site remains usable without AI. Browser-only tools such as the text formatter, unit converter, JSON helper, planner, budget calculator, CSV helper, cyber-safety checklist, and business calculators do not need an AI API key.
+The repository contains `.github/workflows/deploy-pages.yml`, which publishes the repository root through GitHub Actions. The repository owner may need to enable GitHub Pages and select **GitHub Actions** under **Settings → Pages → Build and deployment → Source**. If the workflow reports that the Pages site cannot be found, verify that repository setting before retrying.
 
-To enable the AI Writing & Summary and PDF Q&A features:
-1. In Cloudflare, open **Workers & Pages → Obaid Doctrine Labs → Settings → Functions** (or **Settings → Bindings**, depending on the dashboard layout).
-2. Add a **Workers AI** binding named exactly `AI` and save.
-3. Deploy this version of the site. The Pages Function at `functions/api/ai.js` serves `POST /api/ai`; the model runs server-side so no API token is exposed in browser JavaScript.
-4. Test with non-sensitive sample text first. PDF Q&A extracts text in the browser and sends the extracted text only when a question is submitted.
+The workflow's existence is not proof that a live deployment succeeded. Verify the deployment URL and test the live pages after Pages is enabled. For project sites, test the base path carefully before introducing routes such as `/pk/ur/` and `/global/en/`.
 
-Cloudflare Workers AI currently documents a free allocation of **10,000 Neurons per day** on the Workers Free plan. Usage and model availability can change; check the Cloudflare dashboard before enabling public AI access. Do not upgrade to a paid plan unless you explicitly choose to. Public endpoints can be abused, so monitor usage and disable the AI binding if unexpected usage appears.
+## Privacy and safety
 
-## Manual smoke-test checklist
+- Keep passwords, API keys, tokens and other secrets out of frontend files and public commits.
+- Prefer browser-local processing for deterministic tools and file utilities where practical.
+- Do not send sensitive or confidential data to an AI service.
+- Privacy and terms pages are drafts and must be updated to describe the services actually deployed before public launch.
+- Do not claim legal compliance, AI availability, complete localization or successful deployment without evidence.
 
-- Open the homepage on a phone and desktop; verify the menu opens and closes.
-- Search for a tool and filter by each category; clear the search and filters.
-- Test each browser tool with normal input, empty input, and invalid input where applicable.
-- Verify JSON validation/formatting, unit conversion (including Celsius/Fahrenheit/Kelvin), task removal, budget totals and CSV export.
-- Test PDF text extraction with a small text-based PDF; scanned PDFs may need OCR.
-- After enabling the AI binding, test a short summary and a PDF question. Confirm the site displays a clear message if AI is not configured or the free quota is exhausted.
-- Check About, Contact, Privacy, Terms, and Limitations links. Read and revise the legal drafts before a public launch.
+## Manual regression checklist
 
-This checklist is a manual QA plan, not a claim that every browser/device combination has been tested automatically.
+- Open the English homepage and Urdu homepage directly.
+- Switch English → Urdu and Urdu → English; confirm the main content remains visible.
+- Open representative tool pages directly and refresh them.
+- Test browser back/forward navigation.
+- On a narrow mobile viewport, verify navigation, text direction, form controls and the main content.
+- Test tools with valid, empty and invalid inputs as appropriate.
+- Verify JSON validation, unit conversion, budget totals, CSV export and PDF text extraction with known test cases.
+- Confirm AI-dependent tools report an honest unavailable/configuration message until a real backend is connected.
+- Check About, Contact, Privacy, Terms and Limitations pages.
+
+The static quality script is useful but does not replace real browser, mobile, accessibility or deployment tests. Record any test that has not been run as **NOT TESTED**.

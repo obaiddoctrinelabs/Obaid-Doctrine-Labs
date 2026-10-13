@@ -55,5 +55,22 @@
   <p><a class="quiet-link" href="../../index.html?lang=ur#tools">ٹولز کی لائبریری پر جائیں ↗</a></p>
 </main>
 <footer><a class="brand footer-brand" href="../../index.html?lang=ur"><span class="brand-mark">OD</span><span>Obaid Doctrine <b>Labs</b></span></a><p>پاکستان / اردو</p><div class="footer-links"><a href="../../index.html?lang=ur#tools">تمام ٹولز</a><a href="../../privacy.html?lang=ur">رازداری</a><a href="../../global/en/">Global / English</a></div></footer>
+  <script>
+    /* ODL-UR-MENU-FIX: keep the static Urdu page usable without loading the full app bundle. */
+    (() => {
+      const toggle = document.getElementById("menuToggle");
+      const nav = document.getElementById("mainNav");
+      if (!toggle || !nav) return;
+      toggle.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        toggle.setAttribute("aria-label", isOpen ? "نیویگیشن بند کریں" : "نیویگیشن کھولیں");
+      });
+      nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      }));
+    })();
+  </script>
 </body>
 </html>

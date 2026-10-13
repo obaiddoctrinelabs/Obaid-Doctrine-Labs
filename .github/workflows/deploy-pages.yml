@@ -33,3 +33,18 @@ jobs:
       - name: Publish website
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Set up Node.js for live smoke test
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Playwright for live smoke test
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Verify deployed website on mobile viewport
+        env:
+          ODL_BASE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: node scripts/browser-smoke.mjs

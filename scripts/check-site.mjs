@@ -56,6 +56,26 @@ for (const marker of ['document.documentElement.lang', 'document.documentElement
 }
 if (!process.exitCode) pass("English/Urdu language, direction, and persistence markers present");
 
+const sitemapPath = path.join(root, "sitemap.xml");
+const robots = fs.existsSync(path.join(root, "robots.txt")) ? fs.readFileSync(path.join(root, "robots.txt"), "utf8") : "";
+if (!fs.existsSync(sitemapPath)) fail("sitemap.xml is missing");
+else {
+  const sitemap = fs.readFileSync(sitemapPath, "utf8");
+  for (const route of ["/Obaid-Doctrine-Labs/", "/Obaid-Doctrine-Labs/pk/ur/", "/Obaid-Doctrine-Labs/global/en/", "/Obaid-Doctrine-Labs/about.html", "/Obaid-Doctrine-Labs/contact.html", "/Obaid-Doctrine-Labs/privacy.html", "/Obaid-Doctrine-Labs/terms.html", "/Obaid-Doctrine-Labs/limitations.html", "/Obaid-Doctrine-Labs/pdf-tool.html"]) {
+    if (!sitemap.includes(route)) fail(`sitemap.xml is missing route: ${route}`);
+  }
+  if (!robots.includes("sitemap.xml")) fail("robots.txt does not advertise sitemap.xml");
+  if (!process.exitCode) pass("XML sitemap and robots.txt sitemap reference present");
+}
+
+for (const file of htmlFiles) {
+  const html = fs.readFileSync(path.join(root, file), "utf8");
+  if (!/<meta\s+name="description"\s+content="/i.test(html)) fail(`${file} is missing a meta description`);
+  if (!/<link\s+rel="canonical"\s+href="/i.test(html)) fail(`${file} is missing a canonical URL`);
+  if (!/<meta\s+property="og:title"\s+content="/i.test(html)) fail(`${file} is missing Open Graph title metadata`);
+}
+if (!process.exitCode) pass("SEO metadata: descriptions, canonical URLs, and Open Graph titles");
+
 const aiEndpoint = fs.existsSync(path.join(root, "functions/api/ai.js")) ? fs.readFileSync(path.join(root, "functions/api/ai.js"), "utf8") : "";
 for (const marker of ["MAX_TEXT = 12000", "MAX_QUESTION = 2000", "MAX_BODY_BYTES = 200_000", "submitted text and PDF content as untrusted data"]) {
   if (!aiEndpoint.includes(marker)) fail(`AI endpoint safety marker missing: ${marker}`);

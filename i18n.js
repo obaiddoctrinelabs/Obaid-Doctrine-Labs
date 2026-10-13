@@ -215,7 +215,18 @@
     document.documentElement.dir = language === "ur" ? "rtl" : "ltr";
     document.body.classList.toggle("lang-ur", language === "ur");
     try { localStorage.setItem("odl-language", language); } catch (_) {}
-    translate(document);
+    try {
+      translate(document);
+    } catch (error) {
+      // A translation error must never leave the visitor with an apparently blank page.
+      // Preserve the source-language content and report the failure for diagnosis.
+      console.error("ODL localization failed; preserving page content.", error);
+      document.querySelectorAll(".site-header, main, main > section, footer").forEach(element => {
+        element.style.visibility = "visible";
+        element.style.opacity = "1";
+        if (element.tagName === "MAIN") element.style.display = "block";
+      });
+    }
     document.querySelectorAll("[data-language]").forEach(button => {
       const active = button.dataset.language === language;
       button.setAttribute("aria-pressed", String(active));
@@ -248,10 +259,17 @@
     let saved = "en";
     try { saved = localStorage.getItem("odl-language") || "en"; } catch (_) {}
     setLanguage(saved);
-    const observer = new MutationObserver(records => records.forEach(record => {
-      if (record.type === "characterData") textNode(record.target);
-      record.addedNodes && record.addedNodes.forEach(node => translate(node));
-    }));
+    const observer = new MutationObserver(records => {
+      for (const record of records) {
+        try {
+          if (record.type === "characterData") textNode(record.target);
+          if (record.addedNodes) record.addedNodes.forEach(node => translate(node));
+        } catch (error) {
+          // Keep dynamic tools usable even if one injected text node cannot be translated.
+          console.error("ODL dynamic translation skipped for a node.", error);
+        }
+      }
+    });
     observer.observe(document.body, {subtree:true,childList:true,characterData:true});
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", mount, {once:true}); else mount();

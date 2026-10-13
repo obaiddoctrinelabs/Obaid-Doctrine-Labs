@@ -15,7 +15,7 @@ page.on("console", message => {
 });
 
 try {
-  await page.goto("http://127.0.0.1:4173/index.html", { waitUntil: "networkidle" });
+  await page.goto("http://127.0.0.1:4173/index.html", { waitUntil: "domcontentloaded" });
   // Disable decorative smooth scrolling/transitions so mobile automation measures behavior, not animation timing.
   await page.addStyleTag({ content: "html { scroll-behavior: auto !important; } *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }" });
   const main = page.locator("main#main");
@@ -32,7 +32,7 @@ try {
   if (!(await page.locator("body").innerText()).includes("ٹول")) throw new Error("Urdu interface text was not applied.");
 
   // The user's reported failure occurs after language selection and can persist after reload.
-  await page.reload({ waitUntil: "networkidle" });
+  await page.reload({ waitUntil: "domcontentloaded" });
   await page.waitForFunction(() => document.documentElement.dir === "rtl" && document.documentElement.lang === "ur-PK");
   if (!(await main.isVisible())) throw new Error("Homepage main content is not visible after reloading in saved Urdu mode.");
   if (!(await cards.first().isVisible())) throw new Error("Tool cards are not visible after reloading in saved Urdu mode.");
@@ -101,7 +101,7 @@ try {
     { path: "global/en/", language: "en" }
   ];
   for (const item of directPages) {
-    const response = await page.goto("http://127.0.0.1:4173/" + item.path, { waitUntil: "networkidle" });
+    const response = await page.goto("http://127.0.0.1:4173/" + item.path, { waitUntil: "domcontentloaded" });
     if (!response || !response.ok()) throw new Error(item.path + " failed to load successfully.");
     const subpageMain = page.locator("main");
     if (!(await subpageMain.isVisible())) throw new Error(item.path + " main content is not visible.");

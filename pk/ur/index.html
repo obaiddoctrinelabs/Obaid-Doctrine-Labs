@@ -12,8 +12,8 @@
     /* Critical styles keep this Urdu landing page readable even if the shared stylesheet is cached or partially blocked. */
     html,body{min-height:100%;background:#f6f6ef!important;color:#142e23!important}
     body{margin:0!important;font-family:Tahoma,Arial,sans-serif!important;line-height:1.9!important}
-    body>.skip{position:absolute!important;left:-10000px!important;top:8px!important}
-    body>.skip:focus{left:8px!important}
+    body>.skip{position:absolute!important;left:8px!important;top:8px!important;clip-path:inset(50%)!important}
+    body>.skip:focus{left:8px!important;clip-path:none!important}
     body>.site-header,body>main,body>footer{visibility:visible!important;opacity:1!important;color:#142e23!important}
     body>.site-header{display:flex!important;min-height:68px!important;align-items:center!important;justify-content:space-between!important;flex-wrap:wrap!important;padding:12px 18px!important;background:#fff!important;border-bottom:1px solid #dfe4d9!important}
     body>main{display:block!important;max-width:850px!important;min-height:55vh!important;margin:28px auto!important;padding:20px 24px 55px!important}

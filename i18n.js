@@ -260,9 +260,13 @@
     try {
       // Explicit audience-route query wins over a previously remembered preference.
       const requested = new URLSearchParams(window.location.search).get("lang");
+      const pathname = window.location.pathname;
+      const routeLanguage = /\\/pk\\/ur(?:\\/|$)/.test(pathname)
+        ? "ur"
+        : (/\\/global\\/en(?:\\/|$)/.test(pathname) ? "en" : null);
       saved = requested === "ur" || requested === "en"
         ? requested
-        : (localStorage.getItem("odl-language") || "en");
+        : (routeLanguage || localStorage.getItem("odl-language") || "en");
     } catch (_) {
       try { saved = localStorage.getItem("odl-language") || "en"; } catch (_) {}
     }

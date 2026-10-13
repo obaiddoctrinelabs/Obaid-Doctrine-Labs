@@ -261,9 +261,9 @@
       // Explicit audience-route query wins over a previously remembered preference.
       const requested = new URLSearchParams(window.location.search).get("lang");
       const pathname = window.location.pathname;
-      const routeLanguage = /\\/pk\\/ur(?:\\/|$)/.test(pathname)
+      const routeLanguage = (pathname === "/pk/ur" || pathname.startsWith("/pk/ur/"))
         ? "ur"
-        : (/\\/global\\/en(?:\\/|$)/.test(pathname) ? "en" : null);
+        : ((pathname === "/global/en" || pathname.startsWith("/global/en/")) ? "en" : null);
       saved = requested === "ur" || requested === "en"
         ? requested
         : (routeLanguage || localStorage.getItem("odl-language") || "en");

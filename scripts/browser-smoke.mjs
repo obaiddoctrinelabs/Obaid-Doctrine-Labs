@@ -190,7 +190,16 @@ try {
     throw new Error("Desktop Urdu mode has empty or missing tool-card titles.");
   }
   const desktopUrduOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 2);
-  if (desktopUrduOverflow) throw new Error("Desktop Urdu homepage has horizontal overflow at 1440px viewport width.");
+  if (desktopUrduOverflow) {
+    const overflowDetails = await page.evaluate(() => ({
+      document: { scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth },
+      elements: [...document.querySelectorAll("body *")].map(el => {
+        const rect = el.getBoundingClientRect();
+        return { tag: el.tagName, id: el.id, className: typeof el.className === "string" ? el.className : "", text: (el.innerText || "").trim().slice(0, 70), left: Math.round(rect.left), right: Math.round(rect.right), width: Math.round(rect.width), scrollWidth: el.scrollWidth, clientWidth: el.clientWidth };
+      }).filter(el => el.right > window.innerWidth + 2 || el.left < -2 || el.scrollWidth > el.clientWidth + 2).slice(0, 20)
+    }));
+    throw new Error("Desktop Urdu homepage has horizontal overflow at 1440px viewport width: " + JSON.stringify(overflowDetails));
+  }
 
   if (errors.length) throw new Error("Browser JavaScript/console errors: " + errors.join(" | "));
   console.log("PASS: mobile and desktop homepage, 16 Urdu tool titles, language switch/reload, tool workspaces, JSON Helper, direct Urdu/English routes, informational pages, and no uncaught browser errors.");

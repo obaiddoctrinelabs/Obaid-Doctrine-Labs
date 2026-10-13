@@ -29,6 +29,10 @@ try {
   if (!(await main.isVisible())) throw new Error("Homepage main content is not visible after reloading in saved Urdu mode.");
   if (!(await cards.first().isVisible())) throw new Error("Tool cards are not visible after reloading in saved Urdu mode.");
 
+  // Return to the top after reload so the sticky header is not covered by scroll restoration.
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.locator(".site-header").scrollIntoViewIfNeeded();
+
   // Open every interactive tool card to catch missing handlers or empty workspaces.
   await page.locator('[data-language="en"]').click();
   await page.waitForFunction(() => document.documentElement.dir === "ltr" && document.documentElement.lang === "en");

@@ -173,6 +173,26 @@ try {
     }
   }
 
+  // Verify that informational/tool pages also translate when Urdu is requested directly.
+  const urduPages = [
+    { path: "about.html", heading: "ہمارے اصول" },
+    { path: "contact.html", heading: "آئیے کارآمد چیزیں بنائیں۔" },
+    { path: "privacy.html", heading: "رازداری کی پالیسی" },
+    { path: "terms.html", heading: "استعمال کی شرائط" },
+    { path: "limitations.html", heading: "ٹولز کی حدود" },
+    { path: "pdf-tool.html", heading: "پی ڈی ایف تحقیق اور اے آئی سوال جواب" }
+  ];
+  for (const item of urduPages) {
+    const response = await page.goto(pageUrl(item.path + "?lang=ur"), { waitUntil: "domcontentloaded" });
+    if (!response || !response.ok()) throw new Error(item.path + "?lang=ur failed to load successfully.");
+    await page.waitForFunction(() => document.documentElement.lang === "ur-PK" && document.documentElement.dir === "rtl");
+    const contentMain = page.locator("main");
+    if (!(await contentMain.isVisible())) throw new Error(item.path + " main content is not visible in Urdu.");
+    if (!(await contentMain.innerText()).includes(item.heading)) {
+      throw new Error(item.path + " did not show its expected Urdu heading: " + item.heading);
+    }
+  }
+
   // Repeat the critical homepage and language-switch checks at a desktop viewport.
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(pageUrl("index.html"), { waitUntil: "domcontentloaded" });

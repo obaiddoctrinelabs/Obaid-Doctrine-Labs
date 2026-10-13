@@ -56,6 +56,13 @@ for (const marker of ['document.documentElement.lang', 'document.documentElement
 }
 if (!process.exitCode) pass("English/Urdu language, direction, and persistence markers present");
 
+const homeUrduAlternate = home.match(/<link\\s+rel="alternate"\\s+hreflang="ur-PK"\\s+href="([^"]+)"/i)?.[1] || "";
+if (homeUrduAlternate !== "https://obaiddoctrinelabs.github.io/Obaid-Doctrine-Labs/pk/ur/") {
+  fail("Homepage hreflang=ur-PK must point to the dedicated Pakistan Urdu route");
+} else {
+  pass("Homepage Urdu hreflang points to the dedicated Pakistan Urdu route");
+}
+
 const sitemapPath = path.join(root, "sitemap.xml");
 const robots = fs.existsSync(path.join(root, "robots.txt")) ? fs.readFileSync(path.join(root, "robots.txt"), "utf8") : "";
 if (!fs.existsSync(sitemapPath)) fail("sitemap.xml is missing");

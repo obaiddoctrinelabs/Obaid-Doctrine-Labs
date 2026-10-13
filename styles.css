@@ -133,5 +133,5 @@ body > main { display: block !important; }
 body > .site-header { display: flex !important; }
 body > footer { display: flex !important; }
 body > main > section { visibility: visible !important; opacity: 1 !important; }
-.skip { position: absolute; left: -10000px; top: 8px; }
-.skip:focus { left: 8px; }
+.skip { position: absolute; left: 8px; top: 8px; clip-path: inset(50%); }
+.skip:focus { left: 8px; clip-path: none; }

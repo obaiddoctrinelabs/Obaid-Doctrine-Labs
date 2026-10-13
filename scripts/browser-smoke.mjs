@@ -106,6 +106,16 @@ try {
     const subpageMain = page.locator("main");
     if (!(await subpageMain.isVisible())) throw new Error(item.path + " main content is not visible.");
     if (!(await (await subpageMain.innerText()).trim())) throw new Error(item.path + " has empty main content.");
+    const menuToggle = page.locator("#menuToggle");
+    if (!(await menuToggle.isVisible())) throw new Error(item.path + " has no visible mobile navigation toggle.");
+    await menuToggle.click();
+    if (!(await page.locator("#mainNav").evaluate(nav => nav.classList.contains("open")))) {
+      throw new Error(item.path + " mobile navigation did not open.");
+    }
+    await menuToggle.click();
+    if (await page.locator("#mainNav").evaluate(nav => nav.classList.contains("open"))) {
+      throw new Error(item.path + " mobile navigation did not close.");
+    }
     if (item.language) {
       const expectedDirection = item.language === "ur" ? "rtl" : "ltr";
       if (await page.locator("html").getAttribute("dir") !== expectedDirection) {

@@ -84,6 +84,14 @@
     "AI Research & PDF Q&A":"اے آئی تحقیق اور پی ڈی ایف سوال جواب","Matching passages (not AI-generated answers):\n\n":"متعلقہ اقتباسات (اے آئی کے تیار کردہ جوابات نہیں):\n\n","Potential warning signs:\n• ":"ممکنہ خطرے کی علامات:\n• ","\n\nDo not click, pay, or share codes. Verify through an official channel you find independently.":"\n\nلنک نہ کھولیں، ادائیگی نہ کریں اور کوڈز شیئر نہ کریں۔ خود تلاش کیے گئے سرکاری ذریعے سے تصدیق کریں۔",
     "Income (PKR)":"آمدن (PKR)","Budget limit (PKR)":"بجٹ کی حد (PKR)","Expense description":"اخراجات کی تفصیل","Expense amount (PKR)":"اخراجات کی رقم (PKR)","Clean whitespace":"اضافی خالی جگہیں صاف کریں","Download result as CSV":"نتیجہ CSV میں ڈاؤن لوڈ کریں","Review warning signs":"خطرے کی علامات دیکھیں","Calculate profit":"منافع کا حساب لگائیں","Estimate system size":"سسٹم کے سائز کا اندازہ لگائیں","Create checklist":"چیک لسٹ بنائیں","Calculate farm estimate":"زرعی تخمینہ لگائیں"
   });
+  Object.assign(dictionary, {
+    "Pakistan / Urdu":"پاکستان / اردو",
+    "Global / English":"عالمی / انگریزی",
+    "Pakistan — Urdu Tools":"پاکستان — اردو ٹولز",
+    "Global — English Tools":"عالمی — انگریزی ٹولز",
+    "Open the Urdu tool library":"اردو ٹولز کی لائبریری کھولیں",
+    "Open the English tool library":"انگریزی ٹولز کی لائبریری کھولیں"
+  });
   // Full-page content translations: legal, project, contact, and accessibility copy.
   Object.assign(dictionary, {
     "About — Obaid Doctrine Labs":"تعارف — عبید ڈاکٹرائن لیبز",

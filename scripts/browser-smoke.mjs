@@ -89,6 +89,18 @@ try {
     throw new Error("JSON Helper did not format valid JSON as expected.");
   }
 
+  // AI-dependent tools must fail honestly and still provide a clearly labelled local fallback.
+  await page.locator('.tool-open[data-tool="summary"]').click();
+  await page.locator("#aiText").fill("The sky is blue. The grass is green.");
+  await page.locator("#aiSummarize").click();
+  await page.locator("#aiResult").waitFor({ state: "visible" });
+  if (!(await page.locator("#aiResult").innerText()).includes("LOCAL OUTLINE")) {
+    throw new Error("Unavailable AI backend did not provide the labelled local summary fallback.");
+  }
+  if (!(await page.locator("#toolMessage").innerText()).includes("local fallback")) {
+    throw new Error("AI fallback status was not explained to the visitor.");
+  }
+
   // Directly load informational pages and ensure content is visible on mobile.
   const directPages = [
     { path: "about.html" },

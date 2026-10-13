@@ -3,9 +3,7 @@ import { chromium } from "playwright";
 const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext({
   viewport: { width: 390, height: 844 },
-  deviceScaleFactor: 1,
-  isMobile: true,
-  hasTouch: true
+  deviceScaleFactor: 1
 });
 const page = await context.newPage();
 await page.setViewportSize({ width: 390, height: 844 });

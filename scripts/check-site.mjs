@@ -56,7 +56,7 @@ for (const marker of ['document.documentElement.lang', 'document.documentElement
 }
 if (!process.exitCode) pass("English/Urdu language, direction, and persistence markers present");
 
-const homeUrduAlternate = home.match(/<link\\s+rel="alternate"\\s+hreflang="ur-PK"\\s+href="([^"]+)"/i)?.[1] || "";
+const homeUrduAlternate = home.match(/<link\s+rel="alternate"\s+hreflang="ur-PK"\s+href="([^"]+)"/i)?.[1] || "";
 if (homeUrduAlternate !== "https://obaiddoctrinelabs.github.io/Obaid-Doctrine-Labs/pk/ur/") {
   fail("Homepage hreflang=ur-PK must point to the dedicated Pakistan Urdu route");
 } else {

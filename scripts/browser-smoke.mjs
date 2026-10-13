@@ -8,6 +8,7 @@ const context = await browser.newContext({
   hasTouch: true
 });
 const page = await context.newPage();
+await page.setViewportSize({ width: 390, height: 844 });
 const errors = [];
 page.setDefaultTimeout(10000);
 page.on("pageerror", error => errors.push(error.message));

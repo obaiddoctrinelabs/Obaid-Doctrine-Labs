@@ -105,6 +105,18 @@
     "Open the Urdu tool library":"اردو ٹولز کی لائبریری کھولیں",
     "Open the English tool library":"انگریزی ٹولز کی لائبریری کھولیں"
   });
+  Object.assign(dictionary, {
+    "AI features require a configured server-side AI service. If unavailable, the tool provides a clearly labelled local fallback. Avoid confidential or sensitive information.":"اے آئی خصوصیات کے لیے سرور سائیڈ اے آئی سروس ترتیب دینا ضروری ہے۔ سروس دستیاب نہ ہو تو ٹول واضح طور پر نشان زد مقامی متبادل فراہم کرتا ہے۔ خفیہ یا حساس معلومات شامل نہ کریں۔",
+    "Text is extracted in your browser and sent to the configured AI service only when you ask a question. If that service is unavailable, the tool searches for matching passages locally; that is not an AI answer. Avoid confidential PDFs. Scanned image PDFs may not work.":"متن آپ کے براؤزر میں نکالا جاتا ہے اور سوال پوچھنے پر ہی ترتیب دی گئی اے آئی سروس کو بھیجا جاتا ہے۔ سروس دستیاب نہ ہو تو ٹول مقامی طور پر متعلقہ اقتباسات تلاش کرتا ہے؛ یہ اے آئی جواب نہیں۔ خفیہ پی ڈی ایف استعمال نہ کریں۔ اسکین شدہ تصویری پی ڈی ایف کام نہ بھی کرے۔",
+    "AI service unavailable; a local fallback was prepared and is not AI-generated.":"اے آئی سروس دستیاب نہیں؛ مقامی متبادل تیار کیا گیا ہے، یہ اے آئی سے تیار نہیں۔",
+    "AI rewriting is unavailable until a server-side AI backend is configured.":"سرور سائیڈ اے آئی بیک اینڈ ترتیب دینے تک اے آئی تحریر کی سہولت دستیاب نہیں۔",
+    "SUGGESTED PROMPT (not executed)":"تجویز کردہ پرامپٹ (چلایا نہیں گیا)",
+    "Rewrite the following text clearly and accurately. Preserve facts and numbers; do not invent details.":"درج ذیل متن کو واضح اور درست انداز میں دوبارہ لکھیں۔ حقائق اور اعداد برقرار رکھیں؛ تفصیلات خود سے نہ بنائیں۔",
+    "TEXT:":"متن:",
+    "LOCAL OUTLINE (not AI-generated)":"مقامی خاکہ (اے آئی سے تیار نہیں)",
+    "This is a simple extractive outline, not an AI summary.":"یہ متن سے نکالا گیا سادہ خاکہ ہے، اے آئی خلاصہ نہیں۔",
+    "No matching passage found by local keyword search. Try different terms. This is not an AI answer.":"مقامی لفظی تلاش میں متعلقہ اقتباس نہیں ملا۔ دوسرے الفاظ آزمائیں۔ یہ اے آئی جواب نہیں۔"
+  });
   // Full-page content translations: legal, project, contact, and accessibility copy.
   Object.assign(dictionary, {
     "About — Obaid Doctrine Labs":"تعارف — عبید ڈاکٹرائن لیبز",

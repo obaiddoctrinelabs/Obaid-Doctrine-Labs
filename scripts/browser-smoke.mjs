@@ -1,5 +1,7 @@
 import { chromium } from "playwright";
 
+const baseUrl = process.env.ODL_BASE_URL || "http://127.0.0.1:4173/";
+const pageUrl = (relativePath) => new URL(relativePath, baseUrl).toString();
 const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext({
   viewport: { width: 390, height: 844 },
@@ -18,7 +20,7 @@ page.on("console", message => {
 });
 
 try {
-  await page.goto("http://127.0.0.1:4173/index.html", { waitUntil: "domcontentloaded" });
+  await page.goto(pageUrl("index.html"), { waitUntil: "domcontentloaded" });
   // Disable decorative smooth scrolling/transitions so mobile automation measures behavior, not animation timing.
   await page.addStyleTag({ content: "html { scroll-behavior: auto !important; } *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }" });
   const main = page.locator("main#main");
@@ -116,7 +118,7 @@ try {
     { path: "global/en/", language: "en" }
   ];
   for (const item of directPages) {
-    const response = await page.goto("http://127.0.0.1:4173/" + item.path, { waitUntil: "domcontentloaded" });
+    const response = await page.goto(pageUrl(item.path), { waitUntil: "domcontentloaded" });
     if (!response || !response.ok()) throw new Error(item.path + " failed to load successfully.");
     const subpageMain = page.locator("main");
     if (!(await subpageMain.isVisible())) throw new Error(item.path + " main content is not visible.");

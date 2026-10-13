@@ -143,7 +143,7 @@ try {
         if (!(await subpageMain.innerText()).includes("اردو")) {
           throw new Error("Pakistan Urdu route does not show Urdu content.");
         }
-        const englishRoute = page.locator('a[href="../../global/en/"]');
+        const englishRoute = page.locator('a[href="../../global/en/"]').first();
         if (!(await englishRoute.isVisible())) {
           throw new Error("Pakistan Urdu route has no visible Global / English link.");
         }

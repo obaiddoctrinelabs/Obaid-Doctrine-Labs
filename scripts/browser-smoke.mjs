@@ -29,9 +29,21 @@ try {
   if (!(await main.isVisible())) throw new Error("Homepage main content is not visible after reloading in saved Urdu mode.");
   if (!(await cards.first().isVisible())) throw new Error("Tool cards are not visible after reloading in saved Urdu mode.");
 
-  // Exercise one real tool in both language states to catch broken event wiring.
+  // Open every interactive tool card to catch missing handlers or empty workspaces.
   await page.locator('[data-language="en"]').click();
   await page.waitForFunction(() => document.documentElement.dir === "ltr" && document.documentElement.lang === "en");
+  const toolButtons = page.locator(".tool-open");
+  const toolButtonCount = await toolButtons.count();
+  if (toolButtonCount < 15) throw new Error("Expected at least 15 interactive tool buttons, found " + toolButtonCount);
+  for (let i = 0; i < toolButtonCount; i++) {
+    const button = toolButtons.nth(i);
+    await button.click();
+    if (!(await page.locator("#workspace").isVisible())) throw new Error("Tool workspace did not open for card " + i + ".");
+    if (!(await page.locator("#workspaceTitle").innerText()).trim()) throw new Error("Tool workspace title is empty for card " + i + ".");
+    if (!(await page.locator("#workspaceBody").innerText()).trim()) throw new Error("Tool workspace content is empty for card " + i + ".");
+  }
+
+  // Exercise JSON Helper with known valid input and verify deterministic output.
   await page.locator('.tool-open[data-tool="json"]').click();
   const jsonInput = page.locator("#jsonInput");
   await jsonInput.fill('{"hello":"world"}');

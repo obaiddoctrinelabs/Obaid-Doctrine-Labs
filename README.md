@@ -5,6 +5,8 @@ A responsive static HTML/CSS/JavaScript website for Obaid Doctrine Labs. The pro
 ## Existing website files
 
 - `index.html` — homepage and tool catalogue
+- `pk/ur/index.html` — Pakistan Urdu audience entry route
+- `global/en/index.html` — global English audience entry route
 - `styles.css` — responsive layout and styling
 - `app.js`, `tools-extra.js`, `ai-tools.js` — client-side interactions and tools
 - `i18n.js` — English/Pakistani Urdu translations and RTL direction handling
@@ -25,7 +27,7 @@ GitHub Pages only serves static files. It does not run server-side functions, so
 
 The repository contains `.github/workflows/deploy-pages.yml`, which publishes the repository root through GitHub Actions. The repository owner may need to enable GitHub Pages and select **GitHub Actions** under **Settings → Pages → Build and deployment → Source**. If the workflow reports that the Pages site cannot be found, verify that repository setting before retrying.
 
-The workflow's existence is not proof that a live deployment succeeded. Verify the deployment URL and test the live pages after Pages is enabled. For project sites, test the base path carefully before introducing routes such as `/pk/ur/` and `/global/en/`.
+The workflow's existence is not proof that a live deployment succeeded. Verify the deployment URL and test the live pages after Pages is enabled. The two audience entry routes are `pk/ur/` (Pakistan Urdu) and `global/en/` (global English). Each opens the shared tool library in the route's language; the routes do not duplicate tool code. Keep relative asset paths and the repository base path intact.
 
 ## Privacy and safety
 
@@ -38,6 +40,7 @@ The workflow's existence is not proof that a live deployment succeeded. Verify t
 ## Manual regression checklist
 
 - Open the English homepage and Urdu homepage directly.
+- Open `pk/ur/` and `global/en/` directly; confirm each selects the intended language even if another language was previously saved.
 - Switch English → Urdu and Urdu → English; confirm the main content remains visible.
 - Open representative tool pages directly and refresh them.
 - Test browser back/forward navigation.

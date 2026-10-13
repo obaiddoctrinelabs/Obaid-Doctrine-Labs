@@ -35,6 +35,22 @@ try {
   if (!(await cards.first().isVisible())) throw new Error("Tool cards became hidden after switching to Urdu.");
   if (!(await page.getByRole("button", { name: "اردو" }).isVisible())) throw new Error("Urdu language control is not visible.");
   if (!(await page.locator("body").innerText()).includes("ٹول")) throw new Error("Urdu interface text was not applied.");
+  const expectedUrduTitles = [
+    "تحریری معاون", "متن کی فارمیٹنگ", "اکائیوں کا کنورٹر", "JSON معاون",
+    "پاس ورڈ کی حفاظت", "وقت کا منصوبہ ساز", "بجٹ اور اخراجات کا منصوبہ",
+    "مطالعہ، کوئز اور نوٹس", "اے آئی تحریر اور خلاصہ", "ڈیٹا کنورٹر اور CSV کلینر",
+    "سائبر تحفظ جانچ", "آن لائن کاروبار منافع کیلکولیٹر", "سولر سسٹم کیلکولیٹر",
+    "سرکاری درخواست رہنما", "زرعی اخراجات کیلکولیٹر", "پی ڈی ایف تحقیق اور اے آئی سوال جواب"
+  ];
+  const translatedTitles = await cards.locator("h3").allTextContents();
+  if (translatedTitles.length !== expectedUrduTitles.length ||
+      translatedTitles.some((title, index) => title.trim() !== expectedUrduTitles[index])) {
+    throw new Error("One or more of the 16 tool-card titles did not translate to Urdu. Actual titles: " + JSON.stringify(translatedTitles));
+  }
+  const urduAlternate = await page.locator('link[rel="alternate"][hreflang="ur-PK"]').getAttribute("href");
+  if (urduAlternate !== "https://obaiddoctrinelabs.github.io/Obaid-Doctrine-Labs/pk/ur/") {
+    throw new Error("Homepage Urdu hreflang does not point to the dedicated Pakistan Urdu route.");
+  }
 
   // The user's reported failure occurs after language selection and can persist after reload.
   await page.reload({ waitUntil: "domcontentloaded" });

@@ -257,7 +257,15 @@
       });
     }
     let saved = "en";
-    try { saved = localStorage.getItem("odl-language") || "en"; } catch (_) {}
+    try {
+      // Explicit audience-route query wins over a previously remembered preference.
+      const requested = new URLSearchParams(window.location.search).get("lang");
+      saved = requested === "ur" || requested === "en"
+        ? requested
+        : (localStorage.getItem("odl-language") || "en");
+    } catch (_) {
+      try { saved = localStorage.getItem("odl-language") || "en"; } catch (_) {}
+    }
     setLanguage(saved);
     const observer = new MutationObserver(records => {
       for (const record of records) {

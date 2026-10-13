@@ -4,24 +4,24 @@
   function message(text) { const el = $("toolMessage"); if (el) el.textContent = text; }
   function localFallback(task, source, question) {
     if (task === "summary") {
-      const sentences = source.split(/(?<=[.!?۔])\\s+|\\n+/).map(line => line.trim()).filter(Boolean);
+      const sentences = source.split(/(?<=[.!?۔])\s+|\n+/).map(line => line.trim()).filter(Boolean);
       if (!sentences.length) return "";
-      return "LOCAL OUTLINE (not AI-generated)\\n\\n• " + sentences.slice(0, 8).join("\\n• ") +
-        "\\n\\nThis is a simple extractive outline, not an AI summary.";
+      return "LOCAL OUTLINE (not AI-generated)\n\n• " + sentences.slice(0, 8).join("\n• ") +
+        "\n\nThis is a simple extractive outline, not an AI summary.";
     }
     if (task === "writing") {
-      return "AI rewriting is unavailable until a server-side AI backend is configured.\\n\\n" +
-        "SUGGESTED PROMPT (not executed)\\nRewrite the following text clearly and accurately. Preserve facts and numbers; do not invent details.\\n\\nTEXT:\\n" + source;
+      return "AI rewriting is unavailable until a server-side AI backend is configured.\n\n" +
+        "SUGGESTED PROMPT (not executed)\nRewrite the following text clearly and accurately. Preserve facts and numbers; do not invent details.\n\nTEXT:\n" + source;
     }
     if (task === "pdfqa") {
-      const terms = String(question || "").toLowerCase().split(/[^\\p{L}\\p{N}]+/u).filter(term => term.length > 2);
-      const matches = source.split("\\n").map((line, index) => ({
+      const terms = String(question || "").toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(term => term.length > 2);
+      const matches = source.split("\n").map((line, index) => ({
         line: line.trim(),
         index,
         score: terms.filter(term => line.toLowerCase().includes(term)).length
       })).filter(item => item.line && item.score > 0).sort((a, b) => b.score - a.score || a.index - b.index).slice(0, 6);
       return matches.length
-        ? "Matching passages (not AI-generated answers):\\n\\n" + matches.map(item => item.line).join("\\n\\n")
+        ? "Matching passages (not AI-generated answers):\n\n" + matches.map(item => item.line).join("\n\n")
         : "No matching passage found by local keyword search. Try different terms. This is not an AI answer.";
     }
     return "";

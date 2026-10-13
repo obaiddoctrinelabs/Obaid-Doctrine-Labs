@@ -67,9 +67,9 @@
     "01 / WRITING":"۰۱ / تحریر","02 / PRODUCTIVITY":"۰۲ / پیداواری صلاحیت","03 / CONVERSION":"۰۳ / تبدیلی","04 / DEVELOPERS":"۰۴ / ڈیولپرز","05 / SECURITY":"۰۵ / تحفظ","06 / PLANNING":"۰۶ / منصوبہ بندی","07 / FINANCE":"۰۷ / مالیات","08 / EDUCATION":"۰۸ / تعلیم","09 / WRITING":"۰۹ / تحریر","10 / DATA":"۱۰ / ڈیٹا","11 / CYBER SAFETY":"۱۱ / سائبر تحفظ","12 / BUSINESS":"۱۲ / کاروبار","13 / ENERGY":"۱۳ / توانائی","14 / PUBLIC SERVICES":"۱۴ / عوامی خدمات","15 / AGRICULTURE":"۱۵ / زراعت","16 / RESEARCH":"۱۶ / تحقیق",
     "Please describe what you are writing.":"براہِ کرم بتائیں کہ آپ کیا لکھ رہے ہیں۔","Brief created. This is a prompt/brief, not AI-generated writing.":"ہدایات تیار ہو گئیں۔ یہ پرامپٹ ہے، اے آئی سے لکھی گئی تحریر نہیں۔","Text is processed in your browser. Choose a transformation, then copy the result.":"متن آپ کے براؤزر میں پروسیس ہوتا ہے۔ تبدیلی منتخب کریں، پھر نتیجہ کاپی کریں۔","Choose a category and units to convert.":"تبدیلی کے لیے قسم اور اکائیاں منتخب کریں۔","Validate JSON and format structured data for easier reading.":"JSON کی درستگی جانچیں اور ڈیٹا کو پڑھنے میں آسان بنائیں۔","For your safety, do not type or paste your real password here. This tool gives general guidance only.":"آپ کی حفاظت کے لیے اپنا اصل پاس ورڈ یہاں نہ لکھیں اور نہ پیسٹ کریں۔ یہ ٹول صرف عمومی رہنمائی دیتا ہے۔","Build a stronger passphrase":"زیادہ مضبوط پاس فریز بنائیں","Length and uniqueness matter more than predictable substitutions like “@” for “a”.":"لمبائی اور ہر اکاؤنٹ کے لیے الگ پاس فریز زیادہ اہم ہیں؛ “a” کی جگہ “@” جیسی متوقع تبدیلیاں کافی نہیں۔","Create a temporary task list for this visit. It is not saved after you close or refresh the page.":"اس نشست کے لیے عارضی کاموں کی فہرست بنائیں۔ صفحہ بند یا ریفریش کرنے پر یہ محفوظ نہیں رہے گی۔","Enter a task and a positive number of minutes.":"کام اور صفر سے زیادہ منٹ درج کریں۔","Task added.":"کام شامل ہو گیا۔","List cleared.":"فہرست صاف ہو گئی۔","Copied to clipboard.":"کلپ بورڈ پر کاپی ہو گیا۔","Text selected. Use your device's Copy command.":"متن منتخب کر دیا گیا ہے۔ اپنے آلے کا کاپی کمانڈ استعمال کریں۔","Invalid JSON: ":"JSON درست نہیں: ","Valid JSON.":"JSON درست ہے۔",
     "Obaid Doctrine Labs is a developing digital tools project intended to help people study, work, run businesses and create content with practical, focused utilities.":"عبید ڈاکٹرائن لیبز ایک ترقی پذیر ڈیجیٹل ٹولز منصوبہ ہے، جس کا مقصد مطالعے، کام، کاروبار اور مواد تخلیق کرنے میں عملی اور مخصوص سہولتیں فراہم کرنا ہے۔",
-    "The site includes browser-based utilities and optional AI writing, summary and PDF question features. AI features work only when the Cloudflare Pages deployment includes the server-side function and an active Workers AI binding named AI. Review the Privacy page before submitting text to an AI feature.":"اس ویب سائٹ میں براؤزر پر چلنے والے ٹولز اور اختیاری اے آئی تحریر، خلاصہ اور پی ڈی ایف سوالات شامل ہیں۔ اے آئی فیچرز صرف اسی وقت چلتے ہیں جب Cloudflare Pages پر سرور سائیڈ فنکشن اور AI نام کی فعال Workers AI binding موجود ہو۔ اے آئی فیچر استعمال کرنے سے پہلے رازداری کا صفحہ پڑھیں۔",
-    "Most browser-based tools process input locally in your browser. If you choose an AI writing, summary or PDF question feature and submit it, the text you provide (and your PDF's extracted text for PDF questions) is sent to this site's server-side endpoint for processing by Cloudflare Workers AI. Do not submit passwords, API keys, sensitive personal data, confidential client information or other information you are not comfortable sending for AI processing. AI features may be unavailable if the service is not enabled.":"زیادہ تر ٹولز آپ کا متن براؤزر میں ہی پروسیس کرتے ہیں۔ اگر آپ اے آئی تحریر، خلاصہ یا پی ڈی ایف سوالات استعمال کرتے ہیں تو آپ کا دیا ہوا متن (اور پی ڈی ایف سے نکالا گیا متن) Cloudflare Workers AI کے ذریعے پروسیسنگ کے لیے سرور پر بھیجا جاتا ہے۔ پاس ورڈ، API keys، حساس ذاتی معلومات یا خفیہ کاروباری معلومات نہ بھیجیں۔ سروس فعال نہ ہونے پر اے آئی فیچرز دستیاب نہیں ہوں گے۔",
-    "Cloudflare hosts this site and may process standard request data, such as IP address, browser details and access logs, under its own policies. When an AI feature is used, the submitted text is processed by the configured Cloudflare Workers AI service. The stylesheet may request fonts from Google Fonts. Review those providers' current privacy documentation for details about their handling of data.":"یہ ویب سائٹ Cloudflare پر ہوسٹ ہے، جو اپنی پالیسیوں کے مطابق آئی پی ایڈریس، براؤزر کی تفصیلات اور رسائی کے لاگز جیسا تکنیکی ڈیٹا پروسیس کر سکتا ہے۔ اے آئی فیچر استعمال ہونے پر متن ترتیب دی گئی Cloudflare Workers AI سروس کے ذریعے پروسیس ہوتا ہے۔ اسٹائل شیٹ Google Fonts سے فونٹس بھی طلب کر سکتی ہے۔ ڈیٹا کے استعمال کی تفصیل کے لیے متعلقہ فراہم کنندگان کی تازہ رازداری پالیسی دیکھیں۔",
+    "The site includes browser-based utilities and optional AI writing, summary and PDF question features. AI features work only when a compatible server-side backend and its AI service have been deployed and configured. Review the Privacy page before submitting text to an AI feature.":"اس ویب سائٹ میں براؤزر پر چلنے والے ٹولز اور اختیاری اے آئی سہولیات شامل ہیں۔ اے آئی فیچرز صرف اسی وقت کام کریں گے جب الگ سرور سائیڈ بیک اینڈ اور اے آئی سروس درست طور پر نصب اور فعال ہوں۔ اے آئی فیچر استعمال کرنے سے پہلے رازداری کی پالیسی پڑھیں۔",
+    "Most browser-based tools process input locally in your browser. If you choose an AI writing, summary or PDF question feature and submit it, the text you provide (and your PDF's extracted text for PDF questions) is sent to this site's configured server-side endpoint for processing by its configured AI provider. Do not submit passwords, API keys, sensitive personal data, confidential client information or other information you are not comfortable sending for AI processing. AI features may be unavailable if the backend is not deployed or configured.":"زیادہ تر ٹولز آپ کا متن براؤزر میں ہی پروسیس کرتے ہیں۔ اے آئی فیچر استعمال کرنے پر آپ کا فراہم کردہ متن متعلقہ بیک اینڈ اور اس کے ترتیب دیے گئے اے آئی فراہم کنندہ کو بھیجا جا سکتا ہے۔ پاس ورڈ، API keys، حساس ذاتی معلومات یا خفیہ کاروباری معلومات نہ بھیجیں۔ بیک اینڈ فعال نہ ہونے پر اے آئی فیچرز دستیاب نہیں ہوں گے۔",
+    "The hosting provider configured for this site may process standard request data, such as IP address, browser details and access logs, under its own policies. When an AI feature is used, submitted text is processed by the AI provider configured for the site's backend. The stylesheet may request fonts from Google Fonts. Review the actual providers' current privacy documentation before launch and update this notice to match the services in use.":"میزبانی فراہم کرنے والا اپنی پالیسی کے مطابق آئی پی ایڈریس، براؤزر کی تفصیلات اور رسائی کے لاگز جیسا تکنیکی ڈیٹا پروسیس کر سکتا ہے۔ اے آئی فیچر استعمال ہونے پر متن بیک اینڈ کے لیے ترتیب دیے گئے اے آئی فراہم کنندہ کے ذریعے پروسیس ہو سکتا ہے۔ اسٹائل شیٹ Google Fonts سے فونٹس بھی طلب کر سکتی ہے۔ عوامی اجرا سے پہلے اس نوٹس کو اصل میں استعمال ہونے والی خدمات کے مطابق اپ ڈیٹ کرنا ضروری ہے۔",
     "Review information before relying on it. You are responsible for protecting confidential information and ensuring you have permission to use content you enter.":"کسی معلومات پر انحصار کرنے سے پہلے اس کی تصدیق کریں۔ خفیہ معلومات کی حفاظت اور درج کیے گئے مواد کے استعمال کی اجازت یقینی بنانا آپ کی ذمہ داری ہے۔",
     "We do not guarantee accuracy, employment outcomes, business results, search rankings or uninterrupted availability.":"ہم درستگی، ملازمت کے نتائج، کاروباری کامیابی، سرچ رینکنگ یا بلا تعطل دستیابی کی ضمانت نہیں دیتے۔"
   });
@@ -83,6 +83,39 @@
     "Total cost per acre: PKR ":"فی ایکڑ کل لاگت: PKR ","\nExpected revenue: PKR ":"\nمتوقع آمدن: PKR ","\nEstimated net result: PKR ":"\nمتوقع خالص نتیجہ: PKR ","\nBreak-even price: PKR ":"\nلاگت پوری کرنے والی قیمت: PKR ",
     "AI Research & PDF Q&A":"اے آئی تحقیق اور پی ڈی ایف سوال جواب","Matching passages (not AI-generated answers):\n\n":"متعلقہ اقتباسات (اے آئی کے تیار کردہ جوابات نہیں):\n\n","Potential warning signs:\n• ":"ممکنہ خطرے کی علامات:\n• ","\n\nDo not click, pay, or share codes. Verify through an official channel you find independently.":"\n\nلنک نہ کھولیں، ادائیگی نہ کریں اور کوڈز شیئر نہ کریں۔ خود تلاش کیے گئے سرکاری ذریعے سے تصدیق کریں۔",
     "Income (PKR)":"آمدن (PKR)","Budget limit (PKR)":"بجٹ کی حد (PKR)","Expense description":"اخراجات کی تفصیل","Expense amount (PKR)":"اخراجات کی رقم (PKR)","Clean whitespace":"اضافی خالی جگہیں صاف کریں","Download result as CSV":"نتیجہ CSV میں ڈاؤن لوڈ کریں","Review warning signs":"خطرے کی علامات دیکھیں","Calculate profit":"منافع کا حساب لگائیں","Estimate system size":"سسٹم کے سائز کا اندازہ لگائیں","Create checklist":"چیک لسٹ بنائیں","Calculate farm estimate":"زرعی تخمینہ لگائیں"
+  });
+  Object.assign(dictionary, {
+    "Pakistan / Urdu":"پاکستان / اردو",
+    "Global / English":"عالمی / انگریزی",
+    "Pakistan — Urdu Tools":"پاکستان — اردو ٹولز",
+    "Global — English Tools":"عالمی — انگریزی ٹولز",
+    "Pakistan — Urdu Tools | Obaid Doctrine Labs":"پاکستان — اردو ٹولز | عبید ڈاکٹرائن لیبز",
+    "Global — English Tools | Obaid Doctrine Labs":"عالمی — انگریزی ٹولز | عبید ڈاکٹرائن لیبز",
+    "PAKISTAN / URDU":"پاکستان / اردو",
+    "GLOBAL / ENGLISH":"عالمی / انگریزی",
+    "Digital tools for Pakistan, in Urdu":"پاکستان کے لیے اردو ڈیجیٹل ٹولز",
+    "Practical browser tools for everyday work, study, budgeting, business and data — with a Pakistani Urdu interface and right-to-left reading direction.":"روزمرہ کام، تعلیم، بجٹ، کاروبار اور ڈیٹا کے لیے عملی براؤزر ٹولز — پاکستانی اردو انٹرفیس اور دائیں سے بائیں ترتیب کے ساتھ۔",
+    "Tools for everyday needs":"روزمرہ ضروریات کے ٹولز",
+    "Budget and expense tracking":"بجٹ اور اخراجات کا حساب",
+    "Study notes and revision":"مطالعے کے نوٹس اور دہرائی",
+    "CSV and JSON data utilities":"CSV اور JSON ڈیٹا ٹولز",
+    "Cyber-safety guidance":"سائبر تحفظ کی رہنمائی",
+    "Solar and agriculture estimates":"سولر اور زراعت کے تخمینے",
+    "Verify results before making important financial, government, agricultural or technical decisions.":"اہم مالی، سرکاری، زرعی یا تکنیکی فیصلوں سے پہلے نتائج کی تصدیق کریں۔",
+    "Open the Urdu tool library":"اردو ٹولز کی لائبریری کھولیں",
+    "Open the English tool library":"انگریزی ٹولز کی لائبریری کھولیں"
+  });
+  Object.assign(dictionary, {
+    "AI features require a configured server-side AI service. If unavailable, the tool provides a clearly labelled local fallback. Avoid confidential or sensitive information.":"اے آئی خصوصیات کے لیے سرور سائیڈ اے آئی سروس ترتیب دینا ضروری ہے۔ سروس دستیاب نہ ہو تو ٹول واضح طور پر نشان زد مقامی متبادل فراہم کرتا ہے۔ خفیہ یا حساس معلومات شامل نہ کریں۔",
+    "Text is extracted in your browser and sent to the configured AI service only when you ask a question. If that service is unavailable, the tool searches for matching passages locally; that is not an AI answer. Avoid confidential PDFs. Scanned image PDFs may not work.":"متن آپ کے براؤزر میں نکالا جاتا ہے اور سوال پوچھنے پر ہی ترتیب دی گئی اے آئی سروس کو بھیجا جاتا ہے۔ سروس دستیاب نہ ہو تو ٹول مقامی طور پر متعلقہ اقتباسات تلاش کرتا ہے؛ یہ اے آئی جواب نہیں۔ خفیہ پی ڈی ایف استعمال نہ کریں۔ اسکین شدہ تصویری پی ڈی ایف کام نہ بھی کرے۔",
+    "AI service unavailable; a local fallback was prepared and is not AI-generated.":"اے آئی سروس دستیاب نہیں؛ مقامی متبادل تیار کیا گیا ہے، یہ اے آئی سے تیار نہیں۔",
+    "AI rewriting is unavailable until a server-side AI backend is configured.":"سرور سائیڈ اے آئی بیک اینڈ ترتیب دینے تک اے آئی تحریر کی سہولت دستیاب نہیں۔",
+    "SUGGESTED PROMPT (not executed)":"تجویز کردہ پرامپٹ (چلایا نہیں گیا)",
+    "Rewrite the following text clearly and accurately. Preserve facts and numbers; do not invent details.":"درج ذیل متن کو واضح اور درست انداز میں دوبارہ لکھیں۔ حقائق اور اعداد برقرار رکھیں؛ تفصیلات خود سے نہ بنائیں۔",
+    "TEXT:":"متن:",
+    "LOCAL OUTLINE (not AI-generated)":"مقامی خاکہ (اے آئی سے تیار نہیں)",
+    "This is a simple extractive outline, not an AI summary.":"یہ متن سے نکالا گیا سادہ خاکہ ہے، اے آئی خلاصہ نہیں۔",
+    "No matching passage found by local keyword search. Try different terms. This is not an AI answer.":"مقامی لفظی تلاش میں متعلقہ اقتباس نہیں ملا۔ دوسرے الفاظ آزمائیں۔ یہ اے آئی جواب نہیں۔"
   });
   // Full-page content translations: legal, project, contact, and accessibility copy.
   Object.assign(dictionary, {
@@ -108,15 +141,15 @@
     "Be honest about capabilities and limitations.":"صلاحیتوں اور حدود کے بارے میں دیانت داری اختیار کریں۔",
     "Improve accessibility, performance and privacy as the project grows.":"منصوبے کی ترقی کے ساتھ رسائی، رفتار اور رازداری بہتر بنائیں۔",
     "Current status":"موجودہ صورتِ حال",
-    "The site includes browser-based utilities and optional AI writing, summary and PDF question features. AI features work only when the Cloudflare Pages deployment includes the server-side function and an active Workers AI binding named AI. Review the Privacy page before submitting text to an AI feature.":"اس ویب سائٹ میں براؤزر پر چلنے والے ٹولز اور اختیاری اے آئی تحریر، خلاصہ اور پی ڈی ایف سوال جواب کی سہولیات شامل ہیں۔ اے آئی خصوصیات صرف اسی وقت کام کرتی ہیں جب Cloudflare Pages پر سرور سائیڈ فنکشن اور AI نام کی فعال Workers AI binding موجود ہو۔ اے آئی ٹول میں متن بھیجنے سے پہلے رازداری کی پالیسی پڑھیں۔",
+    "The site includes browser-based utilities and optional AI writing, summary and PDF question features. AI features work only when a compatible server-side backend and its AI service have been deployed and configured. Review the Privacy page before submitting text to an AI feature.":"اس ویب سائٹ میں براؤزر پر چلنے والے ٹولز اور اختیاری اے آئی سہولیات شامل ہیں۔ اے آئی خصوصیات صرف اسی وقت کام کریں گی جب الگ سرور سائیڈ بیک اینڈ اور اے آئی سروس درست طور پر نصب اور فعال ہوں۔ اے آئی ٹول میں متن بھیجنے سے پہلے رازداری کی پالیسی پڑھیں۔",
     "For questions, feedback or project enquiries, use the email address configured by the project owner.":"سوالات، تجاویز یا منصوبے کے بارے میں رابطے کے لیے منصوبے کے مالک کی فراہم کردہ ای میل استعمال کریں۔",
     "Mailbox availability has not been independently verified.":"ای میل کی دستیابی کی آزادانہ تصدیق نہیں کی گئی۔",
     "Important:":"اہم:",
     "This policy is a project draft and must be reviewed against the services actually enabled before public launch.":"یہ پالیسی منصوبے کا ابتدائی مسودہ ہے؛ عوامی اجرا سے پہلے اسے فعال خدمات کے مطابق جانچنا ضروری ہے۔",
     "Text entered into tools":"ٹولز میں درج کیا گیا متن",
-    "Most browser-based tools process input locally in your browser. If you choose an AI writing, summary or PDF question feature and submit it, the text you provide (and your PDF's extracted text for PDF questions) is sent to this site's server-side endpoint for processing by Cloudflare Workers AI. Do not submit passwords, API keys, sensitive personal data, confidential client information or other information you are not comfortable sending for AI processing. AI features may be unavailable if the service is not enabled.":"زیادہ تر براؤزر والے ٹولز آپ کا متن اسی براؤزر میں پراسیس کرتے ہیں۔ اگر آپ اے آئی تحریر، خلاصہ یا پی ڈی ایف سوال جواب کی سہولت استعمال کرتے ہیں تو آپ کا فراہم کردہ متن (اور پی ڈی ایف سوالات کے لیے نکالا گیا متن) اس ویب سائٹ کے سرور سائیڈ اینڈ پوائنٹ کے ذریعے Cloudflare Workers AI کو بھیجا جاتا ہے۔ پاس ورڈ، API کیز، حساس ذاتی معلومات، کلائنٹس کی خفیہ معلومات یا ایسا کوئی مواد نہ بھیجیں جسے اے آئی کے ذریعے پراسیس کروانا آپ کے لیے مناسب نہ ہو۔ سروس فعال نہ ہونے کی صورت میں اے آئی خصوصیات دستیاب نہیں ہو سکتیں۔",
+    "Most browser-based tools process input locally in your browser. If you choose an AI writing, summary or PDF question feature and submit it, the text you provide (and your PDF's extracted text for PDF questions) is sent to this site's configured server-side endpoint for processing by its configured AI provider. Do not submit passwords, API keys, sensitive personal data, confidential client information or other information you are not comfortable sending for AI processing. AI features may be unavailable if the backend is not deployed or configured.":"زیادہ تر براؤزر والے ٹولز آپ کا متن اسی براؤزر میں پراسیس کرتے ہیں۔ اے آئی فیچر استعمال کرنے پر آپ کا فراہم کردہ متن (اور پی ڈی ایف سوالات کے لیے نکالا گیا متن) اس ویب سائٹ کے ترتیب دیے گئے سرور سائیڈ اینڈ پوائنٹ اور اے آئی فراہم کنندہ کو بھیجا جا سکتا ہے۔ پاس ورڈ، API کیز، حساس ذاتی معلومات یا کلائنٹس کی خفیہ معلومات نہ بھیجیں۔ بیک اینڈ فعال نہ ہونے پر اے آئی خصوصیات دستیاب نہیں ہوں گی۔",
     "Hosting and external resources":"میزبانی اور بیرونی وسائل",
-    "Cloudflare hosts this site and may process standard request data, such as IP address, browser details and access logs, under its own policies. When an AI feature is used, the submitted text is processed by the configured Cloudflare Workers AI service. The stylesheet may request fonts from Google Fonts. Review those providers' current privacy documentation for details about their handling of data.":"یہ ویب سائٹ Cloudflare پر ہوسٹ ہے، جو اپنی پالیسیوں کے مطابق عام درخواست کا ڈیٹا، مثلاً IP ایڈریس، براؤزر کی تفصیلات اور رسائی کے لاگز پراسیس کر سکتا ہے۔ اے آئی خصوصیت استعمال ہونے پر بھیجا گیا متن ترتیب دی گئی Cloudflare Workers AI سروس پراسیس کرتی ہے۔ اسٹائل شیٹ Google Fonts سے فونٹس طلب کر سکتی ہے۔ ڈیٹا کے استعمال کی تفصیلات کے لیے ان فراہم کنندگان کی تازہ رازداری کی دستاویزات دیکھیں۔",
+    "The hosting provider configured for this site may process standard request data, such as IP address, browser details and access logs, under its own policies. When an AI feature is used, submitted text is processed by the AI provider configured for the site's backend. The stylesheet may request fonts from Google Fonts. Review the actual providers' current privacy documentation before launch and update this notice to match the services in use.":"میزبانی فراہم کرنے والا اپنی پالیسی کے مطابق عام درخواست کا ڈیٹا، مثلاً IP ایڈریس، براؤزر کی تفصیلات اور رسائی کے لاگز پراسیس کر سکتا ہے۔ اے آئی خصوصیت استعمال ہونے پر بھیجا گیا متن بیک اینڈ کے لیے ترتیب دیے گئے اے آئی فراہم کنندہ کے ذریعے پراسیس ہو سکتا ہے۔ اسٹائل شیٹ Google Fonts سے فونٹس طلب کر سکتی ہے۔ عوامی اجرا سے پہلے اس نوٹس کو اصل خدمات کے مطابق اپ ڈیٹ کرنا ضروری ہے۔",
     "Cookies and analytics":"کوکیز اور تجزیاتی ٹولز",
     "The current project code does not intentionally set tracking cookies or include analytics scripts. Hosting and third-party providers may use their own technical processes; this draft should be reviewed if analytics, forms or other services are added.":"موجودہ منصوبے کا کوڈ جان بوجھ کر ٹریکنگ کوکیز سیٹ نہیں کرتا اور نہ ہی تجزیاتی اسکرپٹس شامل کرتا ہے۔ ہوسٹنگ اور تیسرے فریق کے فراہم کنندگان اپنے تکنیکی طریقے استعمال کر سکتے ہیں۔ اگر تجزیاتی ٹولز، فارم یا دوسری خدمات شامل کی جائیں تو اس مسودے پر دوبارہ نظرثانی ضروری ہے۔",
     "Questions:":"سوالات:",
@@ -128,7 +161,7 @@
     "We do not guarantee accuracy, employment outcomes, business results, search rankings or uninterrupted availability.":"ہم درستگی، ملازمت کے نتائج، کاروباری کامیابی، سرچ رینکنگ یا بلا تعطل دستیابی کی ضمانت نہیں دیتے۔",
     "Updates":"تازہ کاریاں",
     "This is a starter draft and should be reviewed for the actual operating jurisdiction and services before public launch.":"یہ ابتدائی مسودہ ہے؛ عوامی اجرا سے پہلے اسے اصل قانونی دائرۂ اختیار اور فعال خدمات کے مطابق جانچنا چاہیے۔",
-    "The homepage lists browser-based utilities and optional AI writing, summary and PDF question features. AI features work only when the Cloudflare Pages deployment has an active Workers AI binding named AI; otherwise they will be unavailable.":"ہوم پیج پر براؤزر میں چلنے والے ٹولز اور اختیاری اے آئی تحریر، خلاصہ اور پی ڈی ایف سوال جواب کی سہولیات موجود ہیں۔ اے آئی خصوصیات صرف اسی وقت کام کرتی ہیں جب Cloudflare Pages پر AI نام کی فعال Workers AI binding موجود ہو؛ بصورتِ دیگر یہ دستیاب نہیں ہوں گی۔",
+    "The homepage lists browser-based utilities and optional AI writing, summary and PDF question features. AI features will work only after a compatible separate backend and AI provider have been deployed and configured; otherwise they will be unavailable.":"ہوم پیج پر براؤزر میں چلنے والے ٹولز اور اختیاری اے آئی سہولیات موجود ہیں۔ اے آئی خصوصیات صرف اسی وقت کام کریں گی جب الگ بیک اینڈ اور اے آئی فراہم کنندہ نصب اور فعال ہوں؛ بصورتِ دیگر یہ دستیاب نہیں ہوں گی۔",
     "Before relying on a result":"نتیجے پر انحصار کرنے سے پہلے",
     "Verify facts against original sources, protect confidential information, and use appropriate professional judgement for important decisions. No tool guarantees grades, hiring, sales or other outcomes.":"حقائق کو اصل ذرائع سے جانچیں، خفیہ معلومات کی حفاظت کریں اور اہم فیصلوں میں مناسب پیشہ ورانہ رائے استعمال کریں۔ کوئی ٹول نمبروں، ملازمت، فروخت یا دیگر نتائج کی ضمانت نہیں دیتا۔",
     "← Back to home":"← ہوم پیج پر واپس جائیں",
@@ -215,7 +248,18 @@
     document.documentElement.dir = language === "ur" ? "rtl" : "ltr";
     document.body.classList.toggle("lang-ur", language === "ur");
     try { localStorage.setItem("odl-language", language); } catch (_) {}
-    translate(document);
+    try {
+      translate(document);
+    } catch (error) {
+      // A translation error must never leave the visitor with an apparently blank page.
+      // Preserve the source-language content and report the failure for diagnosis.
+      console.error("ODL localization failed; preserving page content.", error);
+      document.querySelectorAll(".site-header, main, main > section, footer").forEach(element => {
+        element.style.visibility = "visible";
+        element.style.opacity = "1";
+        if (element.tagName === "MAIN") element.style.display = "block";
+      });
+    }
     document.querySelectorAll("[data-language]").forEach(button => {
       const active = button.dataset.language === language;
       button.setAttribute("aria-pressed", String(active));
@@ -246,12 +290,31 @@
       });
     }
     let saved = "en";
-    try { saved = localStorage.getItem("odl-language") || "en"; } catch (_) {}
+    try {
+      // Explicit audience-route query wins over a previously remembered preference.
+      const requested = new URLSearchParams(window.location.search).get("lang");
+      const pathname = window.location.pathname;
+      const routeLanguage = (pathname.endsWith("/pk/ur/") || pathname.endsWith("/pk/ur"))
+        ? "ur"
+        : ((pathname.endsWith("/global/en/") || pathname.endsWith("/global/en")) ? "en" : null);
+      saved = requested === "ur" || requested === "en"
+        ? requested
+        : (routeLanguage || localStorage.getItem("odl-language") || "en");
+    } catch (_) {
+      try { saved = localStorage.getItem("odl-language") || "en"; } catch (_) {}
+    }
     setLanguage(saved);
-    const observer = new MutationObserver(records => records.forEach(record => {
-      if (record.type === "characterData") textNode(record.target);
-      record.addedNodes && record.addedNodes.forEach(node => translate(node));
-    }));
+    const observer = new MutationObserver(records => {
+      for (const record of records) {
+        try {
+          if (record.type === "characterData") textNode(record.target);
+          if (record.addedNodes) record.addedNodes.forEach(node => translate(node));
+        } catch (error) {
+          // Keep dynamic tools usable even if one injected text node cannot be translated.
+          console.error("ODL dynamic translation skipped for a node.", error);
+        }
+      }
+    });
     observer.observe(document.body, {subtree:true,childList:true,characterData:true});
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", mount, {once:true}); else mount();

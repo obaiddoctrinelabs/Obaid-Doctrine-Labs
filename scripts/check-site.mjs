@@ -14,8 +14,20 @@ for (const file of jsFiles) {
   else pass(`JavaScript syntax: ${file}`);
 }
 
-const htmlFiles = fs.readdirSync(root).filter((name) => name.endsWith(".html"));
+const htmlFiles = [];
+function collectHtml(directory, relative = "") {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    if (entry.name === ".git" || entry.name === "node_modules") continue;
+    const absolute = path.join(directory, entry.name);
+    const relativePath = path.join(relative, entry.name);
+    if (entry.isDirectory()) collectHtml(absolute, relativePath);
+    else if (entry.isFile() && entry.name.endsWith(".html")) htmlFiles.push(relativePath);
+  }
+}
+collectHtml(root);
 if (!htmlFiles.includes("index.html")) fail("index.html is missing");
+if (!htmlFiles.includes(path.join("pk", "ur", "index.html"))) fail("Pakistan Urdu entry route is missing");
+if (!htmlFiles.includes(path.join("global", "en", "index.html"))) fail("Global English entry route is missing");
 for (const file of htmlFiles) {
   const html = fs.readFileSync(path.join(root, file), "utf8");
   const refs = [...html.matchAll(/(?:href|src)="([^"]+)"/g)].map((match) => match[1]);

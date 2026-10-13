@@ -118,7 +118,20 @@
       answer.hidden = false;
       setStatus("Answer ready. Verify important claims and page references against your PDF.");
     } catch (error) {
-      setStatus(error && error.message ? error.message : "Could not contact the AI service. Please try again.");
+      // Static hosting may not have a server-side AI endpoint. Provide a local,
+      // clearly labelled keyword search instead of presenting an error as an answer.
+      const terms = question.toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(term => term.length > 2);
+      const matches = extractedText.split(/\n+/).map((line, index) => ({
+        line: line.trim(),
+        index,
+        score: terms.filter(term => line.toLowerCase().includes(term)).length
+      })).filter(item => item.line && item.score > 0)
+        .sort((a, b) => b.score - a.score || a.index - b.index).slice(0, 6);
+      answer.textContent = matches.length
+        ? "Matching passages (not AI-generated answers):\n\n" + matches.map(item => item.line).join("\n\n")
+        : "No matching passage found by local keyword search. Try different terms. This is not an AI answer.";
+      answer.hidden = false;
+      setStatus("AI service unavailable; a local fallback was prepared and is not AI-generated.");
     } finally {
       busy = false; askButton.disabled = !extractedText; askButton.textContent = "Ask about this PDF ↗";
     }

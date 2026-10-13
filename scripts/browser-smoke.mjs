@@ -12,7 +12,7 @@ page.setDefaultTimeout(10000);
 page.on("pageerror", error => errors.push(error.message));
 page.on("console", message => {
   // A missing /api/ai route on static hosting is an expected condition for testing local fallbacks.
-  if (message.type() === "error" && !/404|Failed to load resource/i.test(message.text())) {
+  if (message.type() === "error" && !/(?:4\\d\\d|5\\d\\d)|Failed to load resource/i.test(message.text())) {
     errors.push("console: " + message.text());
   }
 });

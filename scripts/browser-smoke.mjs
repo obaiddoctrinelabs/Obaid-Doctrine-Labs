@@ -36,8 +36,23 @@ try {
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.locator(".site-header").scrollIntoViewIfNeeded();
 
+  // Diagnose the exact hit target if RTL layout moves the control outside its tappable area.
+  const englishSwitch = page.locator('[data-language="en"]');
+  const hitTest = await englishSwitch.evaluate(el => {
+    const rect = el.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const hit = document.elementFromPoint(x, y);
+    return {
+      rect: { left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom, width: rect.width, height: rect.height },
+      viewport: { width: window.innerWidth, height: window.innerHeight },
+      hit: hit ? { tag: hit.tagName, id: hit.id, className: String(hit.className || "") } : null
+    };
+  });
+  console.log("RTL language-switcher hit test:", JSON.stringify(hitTest));
+
   // Open every interactive tool card to catch missing handlers or empty workspaces.
-  await page.locator('[data-language="en"]').click();
+  await englishSwitch.click();
   await page.waitForFunction(() => document.documentElement.dir === "ltr" && document.documentElement.lang === "en");
   const toolButtons = page.locator(".tool-open");
   const toolButtonCount = await toolButtons.count();

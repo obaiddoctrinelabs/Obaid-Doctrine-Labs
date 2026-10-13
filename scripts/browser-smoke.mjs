@@ -175,7 +175,7 @@ try {
 
   // Verify that informational/tool pages also translate when Urdu is requested directly.
   const urduPages = [
-    { path: "about.html", heading: "ہمارے اصول" },
+    { path: "about.html", heading: "خیالات سے ذہین ٹولز تک۔" },
     { path: "contact.html", heading: "آئیے کارآمد چیزیں بنائیں۔" },
     { path: "privacy.html", heading: "رازداری کی پالیسی" },
     { path: "terms.html", heading: "استعمال کی شرائط" },

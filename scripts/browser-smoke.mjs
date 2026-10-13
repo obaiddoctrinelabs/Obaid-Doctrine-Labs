@@ -165,6 +165,10 @@ try {
         if (!(await englishRoute.isVisible())) {
           throw new Error("Pakistan Urdu route has no visible Global / English link.");
         }
+        const mobileOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 2);
+        if (mobileOverflow) {
+          throw new Error("Pakistan Urdu route has horizontal overflow on the mobile viewport.");
+        }
       }
     }
   }
@@ -199,6 +203,16 @@ try {
       }).filter(el => el.right > window.innerWidth + 2 || el.left < -2 || el.scrollWidth > el.clientWidth + 2).slice(0, 20)
     }));
     throw new Error("Desktop Urdu homepage has horizontal overflow at 1440px viewport width: " + JSON.stringify(overflowDetails));
+  }
+
+  // Test the dedicated Pakistan Urdu landing page at desktop width too, not only the shared app shell.
+  await page.goto(pageUrl("pk/ur/"), { waitUntil: "domcontentloaded" });
+  if (!(await page.locator("main#main").isVisible())) {
+    throw new Error("Dedicated Urdu landing page main content is not visible on desktop.");
+  }
+  const dedicatedUrduDesktopOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 2);
+  if (dedicatedUrduDesktopOverflow) {
+    throw new Error("Dedicated Urdu landing page has horizontal overflow at 1440px viewport width.");
   }
 
   if (errors.length) throw new Error("Browser JavaScript/console errors: " + errors.join(" | "));

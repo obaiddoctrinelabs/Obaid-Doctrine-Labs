@@ -70,9 +70,9 @@ else {
 
 for (const file of htmlFiles) {
   const html = fs.readFileSync(path.join(root, file), "utf8");
-  if (!/<meta\\s+name="description"\\s+content="/i.test(html)) fail(`${file} is missing a meta description`);
-  if (!/<link\\s+rel="canonical"\\s+href="/i.test(html)) fail(`${file} is missing a canonical URL`);
-  if (!/<meta\\s+property="og:title"\\s+content="/i.test(html)) fail(`${file} is missing Open Graph title metadata`);
+  if (!/<meta\s+name="description"\s+content="/i.test(html)) fail(`${file} is missing a meta description`);
+  if (!/<link\s+rel="canonical"\s+href="/i.test(html)) fail(`${file} is missing a canonical URL`);
+  if (!/<meta\s+property="og:title"\s+content="/i.test(html)) fail(`${file} is missing Open Graph title metadata`);
 }
 if (!process.exitCode) pass("SEO metadata: descriptions, canonical URLs, and Open Graph titles");
 

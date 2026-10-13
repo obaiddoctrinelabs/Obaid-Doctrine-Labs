@@ -102,6 +102,14 @@ try {
       if (await page.locator("html").getAttribute("dir") !== expectedDirection) {
         throw new Error(item.path + " did not select the expected " + item.language + " language/direction.");
       }
+      if (item.language === "ur") {
+        await page.locator('[data-language="en"]').click();
+        await page.waitForFunction(() => document.documentElement.dir === "ltr" && document.documentElement.lang === "en");
+        if (!(await subpageMain.isVisible())) throw new Error("Pakistan route content disappeared when switching to English.");
+        await page.locator('[data-language="ur"]').click();
+        await page.waitForFunction(() => document.documentElement.dir === "rtl" && document.documentElement.lang === "ur-PK");
+        if (!(await subpageMain.isVisible())) throw new Error("Pakistan route content disappeared when switching back to Urdu.");
+      }
     }
   }
 

@@ -169,8 +169,31 @@ try {
     }
   }
 
+  // Repeat the critical homepage and language-switch checks at a desktop viewport.
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(pageUrl("index.html"), { waitUntil: "domcontentloaded" });
+  const desktopMain = page.locator("main#main");
+  const desktopCards = page.locator(".tool-card");
+  if (!(await desktopMain.isVisible())) throw new Error("Desktop homepage main content is not visible.");
+  if (await desktopCards.count() !== 16 || !(await desktopCards.first().isVisible())) {
+    throw new Error("Desktop homepage does not show all 16 tool cards.");
+  }
+  const desktopOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 2);
+  if (desktopOverflow) throw new Error("Desktop homepage has horizontal overflow at 1440px viewport width.");
+  await page.locator('[data-language="ur"]').click();
+  await page.waitForFunction(() => document.documentElement.dir === "rtl" && document.documentElement.lang === "ur-PK");
+  if (!(await desktopMain.isVisible()) || !(await desktopCards.first().isVisible())) {
+    throw new Error("Desktop main content became hidden after switching to Urdu.");
+  }
+  const desktopUrduTitles = await desktopCards.locator("h3").allTextContents();
+  if (desktopUrduTitles.length !== 16 || desktopUrduTitles.some(title => !title.trim())) {
+    throw new Error("Desktop Urdu mode has empty or missing tool-card titles.");
+  }
+  const desktopUrduOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 2);
+  if (desktopUrduOverflow) throw new Error("Desktop Urdu homepage has horizontal overflow at 1440px viewport width.");
+
   if (errors.length) throw new Error("Browser JavaScript/console errors: " + errors.join(" | "));
-  console.log("PASS: mobile homepage, all 16 tools, Urdu switch/reload, JSON Helper, and all informational pages; no uncaught browser errors.");
+  console.log("PASS: mobile and desktop homepage, 16 Urdu tool titles, language switch/reload, tool workspaces, JSON Helper, direct Urdu/English routes, informational pages, and no uncaught browser errors.");
 } finally {
   await browser.close();
 }

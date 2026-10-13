@@ -53,12 +53,28 @@ try {
   }
 
   // Directly load informational pages and ensure content is visible on mobile.
-  for (const path of ["about.html", "contact.html", "privacy.html", "terms.html", "limitations.html", "pdf-tool.html"]) {
-    const response = await page.goto("http://127.0.0.1:4173/" + path, { waitUntil: "networkidle" });
-    if (!response || !response.ok()) throw new Error(path + " failed to load successfully.");
+  const directPages = [
+    { path: "about.html" },
+    { path: "contact.html" },
+    { path: "privacy.html" },
+    { path: "terms.html" },
+    { path: "limitations.html" },
+    { path: "pdf-tool.html" },
+    { path: "pk/ur/", language: "ur" },
+    { path: "global/en/", language: "en" }
+  ];
+  for (const item of directPages) {
+    const response = await page.goto("http://127.0.0.1:4173/" + item.path, { waitUntil: "networkidle" });
+    if (!response || !response.ok()) throw new Error(item.path + " failed to load successfully.");
     const subpageMain = page.locator("main");
-    if (!(await subpageMain.isVisible())) throw new Error(path + " main content is not visible.");
-    if (!(await subpageMain.innerText()).trim()) throw new Error(path + " has empty main content.");
+    if (!(await subpageMain.isVisible())) throw new Error(item.path + " main content is not visible.");
+    if (!(await (await subpageMain.innerText()).trim())) throw new Error(item.path + " has empty main content.");
+    if (item.language) {
+      const expectedDirection = item.language === "ur" ? "rtl" : "ltr";
+      if (await page.locator("html").getAttribute("dir") !== expectedDirection) {
+        throw new Error(item.path + " did not select the expected " + item.language + " language/direction.");
+      }
+    }
   }
 
   if (errors.length) throw new Error("Browser JavaScript/console errors: " + errors.join(" | "));

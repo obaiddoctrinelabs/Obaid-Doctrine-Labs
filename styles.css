@@ -135,12 +135,3 @@ body > footer { display: flex !important; }
 body > main > section { visibility: visible !important; opacity: 1 !important; }
 .skip { position: absolute; left: -10000px; top: 8px; }
 .skip:focus { left: 8px; }
-
-
-/* Keep the mixed-script header's hit targets predictable in RTL layouts.
-   The page content remains RTL; the header's flex geometry stays LTR so the
-   language buttons remain inside the mobile viewport and easy to tap. */
-html[dir="rtl"] .site-header { direction: ltr; }
-html[dir="rtl"] .site-header .brand,
-html[dir="rtl"] .site-header .language-switcher { direction: ltr; }
-html[dir="rtl"] .site-header nav { direction: rtl; }

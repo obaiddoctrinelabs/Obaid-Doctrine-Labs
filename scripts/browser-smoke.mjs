@@ -137,12 +137,16 @@ try {
         throw new Error(item.path + " did not select the expected " + item.language + " language/direction.");
       }
       if (item.language === "ur") {
-        await page.locator('[data-language="en"]').click();
-        await page.waitForFunction(() => document.documentElement.dir === "ltr" && document.documentElement.lang === "en");
-        if (!(await subpageMain.isVisible())) throw new Error("Pakistan route content disappeared when switching to English.");
-        await page.locator('[data-language="ur"]').click();
-        await page.waitForFunction(() => document.documentElement.dir === "rtl" && document.documentElement.lang === "ur-PK");
-        if (!(await subpageMain.isVisible())) throw new Error("Pakistan route content disappeared when switching back to Urdu.");
+        // The Pakistan Urdu route is a standalone RTL landing page, not the
+        // app shell; it intentionally has no [data-language] toggle controls.
+        // Verify its Urdu content and its explicit link to the global English site.
+        if (!(await subpageMain.innerText()).includes("اردو")) {
+          throw new Error("Pakistan Urdu route does not show Urdu content.");
+        }
+        const englishRoute = page.locator('a[href="../../global/en/"]');
+        if (!(await englishRoute.isVisible())) {
+          throw new Error("Pakistan Urdu route has no visible Global / English link.");
+        }
       }
     }
   }

@@ -62,13 +62,23 @@ try {
   const toolButtons = page.locator(".tool-open");
   const toolButtonCount = await toolButtons.count();
   if (toolButtonCount < 15) throw new Error("Expected at least 15 interactive tool buttons, found " + toolButtonCount);
+  let openedWorkspaces = 0;
   for (let i = 0; i < toolButtonCount; i++) {
     const button = toolButtons.nth(i);
+    const toolName = await button.getAttribute("data-tool");
+    if (!toolName) {
+      // The PDF Q&A card intentionally navigates to its dedicated page instead of an inline workspace.
+      const href = await button.getAttribute("href");
+      if (!href || !href.includes("pdf-tool.html")) throw new Error("Unrecognized non-workspace tool card at index " + i + ".");
+      continue;
+    }
     await button.click();
-    if (!(await page.locator("#workspace").isVisible())) throw new Error("Tool workspace did not open for card " + i + ".");
-    if (!(await page.locator("#workspaceTitle").innerText()).trim()) throw new Error("Tool workspace title is empty for card " + i + ".");
-    if (!(await page.locator("#workspaceBody").innerText()).trim()) throw new Error("Tool workspace content is empty for card " + i + ".");
+    if (!(await page.locator("#workspace").isVisible())) throw new Error("Tool workspace did not open for " + toolName + ".");
+    if (!(await page.locator("#workspaceTitle").innerText()).trim()) throw new Error("Tool workspace title is empty for " + toolName + ".");
+    if (!(await page.locator("#workspaceBody").innerText()).trim()) throw new Error("Tool workspace content is empty for " + toolName + ".");
+    openedWorkspaces++;
   }
+  if (openedWorkspaces !== 15) throw new Error("Expected 15 inline tool workspaces, opened " + openedWorkspaces + ".");
 
   // Exercise JSON Helper with known valid input and verify deterministic output.
   await page.locator('.tool-open[data-tool="json"]').click();

@@ -12,16 +12,15 @@ A responsive static HTML/CSS/JavaScript website for Obaid Doctrine Labs. The pro
 - `i18n.js` — English/Pakistani Urdu translations and RTL direction handling
 - `about.html`, `contact.html`, `privacy.html`, `terms.html`, `limitations.html` — project and policy pages
 - `scripts/check-site.mjs` — static JavaScript, asset-reference, localization-marker and safety-marker checks
-- `functions/api/ai.js` — legacy server-side AI endpoint written for a Cloudflare Pages Functions runtime; it is not executable on GitHub Pages and is not part of the approved target hosting plan
+- `functions/api/ai.js` — legacy server-side AI endpoint tied to a platform-specific functions runtime; it is not executable on GitHub Pages
 
 ## Approved hosting direction
 
 - Static frontend: GitHub Pages.
 - Backend: a separate provider only when a real server-side feature requires it. Provider selection must be based on verified current free-tier limits and secret-management support.
-- Cloudflare is not part of the approved hosting or deployment plan.
 - No paid service or upgrade may be enabled without the owner's explicit permission.
 
-GitHub Pages only serves static files. It does not run server-side functions, so `functions/api/ai.js` must not be expected to work on GitHub Pages. AI writing, summarization and AI PDF Q&A must be treated as unavailable until a compatible separate backend and its AI provider are configured and tested. Do not substitute fabricated AI responses or expose API keys in browser code.
+GitHub Pages only serves static files. It does not run server-side functions, so `functions/api/ai.js` must not be expected to work on GitHub Pages. When a compatible backend is not configured, AI Writing & Summary provides a clearly labelled local outline or prompt, and PDF Q&A provides local keyword-matched passages. These fallbacks are not AI-generated answers. True AI responses require a compatible separate backend and an AI provider configured and tested server-side. Do not expose API keys in browser code.
 
 ## GitHub Pages setup
 

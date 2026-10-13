@@ -1,7 +1,13 @@
 import { chromium } from "playwright";
 
 const browser = await chromium.launch({ headless: true });
-const page = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+const context = await browser.newContext({
+  viewport: { width: 390, height: 844 },
+  deviceScaleFactor: 1,
+  isMobile: true,
+  hasTouch: true
+});
+const page = await context.newPage();
 const errors = [];
 page.setDefaultTimeout(10000);
 page.on("pageerror", error => errors.push(error.message));

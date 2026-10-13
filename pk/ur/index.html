@@ -26,6 +26,9 @@
     body>footer a,body>footer p{color:#fff!important}
     body a{color:#17633b!important}
     @media(max-width:600px){body>main{margin:12px auto!important;padding:16px 18px 40px!important}body>.site-header{gap:12px!important}}
+    /* Keep the mobile menu button tappable above the expanded navigation links. */
+    body>.site-header>.menu-toggle{position:relative!important;z-index:1002!important;flex:0 0 auto!important;pointer-events:auto!important}
+    body>.site-header>#mainNav{z-index:1001!important}
   </style>
 </head>
 <body class="lang-ur">

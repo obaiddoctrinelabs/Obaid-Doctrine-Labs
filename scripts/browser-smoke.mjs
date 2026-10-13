@@ -3,6 +3,7 @@ import { chromium } from "playwright";
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
 const errors = [];
+page.setDefaultTimeout(10000);
 page.on("pageerror", error => errors.push(error.message));
 page.on("console", message => {
   if (message.type() === "error") errors.push("console: " + message.text());
@@ -10,6 +11,8 @@ page.on("console", message => {
 
 try {
   await page.goto("http://127.0.0.1:4173/index.html", { waitUntil: "networkidle" });
+  // Disable decorative smooth scrolling/transitions so mobile automation measures behavior, not animation timing.
+  await page.addStyleTag({ content: "html { scroll-behavior: auto !important; } *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }" });
   const main = page.locator("main#main");
   const cards = page.locator(".tool-card");
   if (!(await main.isVisible())) throw new Error("Homepage main content is not visible on initial load.");

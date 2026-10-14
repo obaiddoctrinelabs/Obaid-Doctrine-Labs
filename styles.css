@@ -135,3 +135,7 @@ body > footer { display: flex !important; }
 body > main > section { visibility: visible !important; opacity: 1 !important; }
 .skip { position: absolute; left: 8px; top: 8px; clip-path: inset(50%); }
 .skip:focus { left: 8px; clip-path: none; }
+
+/* ODL brand logo: crisp sizing on desktop and mobile */
+.brand-logo{display:block;width:48px;height:48px;object-fit:contain;flex:0 0 auto;border-radius:7px}.brand{gap:12px}.brand-name{line-height:1.5}
+@media(max-width:520px){.brand-logo{width:42px;height:42px}.brand-name{font-size:10px;letter-spacing:.8px}}

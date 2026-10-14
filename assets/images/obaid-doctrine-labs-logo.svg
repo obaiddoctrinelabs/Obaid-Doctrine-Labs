@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96" role="img" aria-labelledby="title desc">
+<title id="title">Obaid Doctrine Labs</title><desc id="desc">ODL globe emblem and Smart Tools, Better Future tagline.</desc>
+<rect width="320" height="96" rx="14" fill="#102b22"/>
+<circle cx="48" cy="43" r="30" fill="none" stroke="#38d6bd" stroke-width="2.5"/>
+<circle cx="48" cy="43" r="20" fill="none" stroke="#8be56c" stroke-width="1.5"/>
+<path d="M18 43h60M48 13c-10 9-15 19-15 30s5 21 15 30M48 13c10 9 15 19 15 30s-5 21-15 30" fill="none" stroke="#38d6bd" stroke-width="1.4"/>
+<text x="48" y="49" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="800" fill="#f4ffe9">ODL</text>
+<text x="91" y="38" font-family="Arial,sans-serif" font-size="17" font-weight="800" letter-spacing="1.2" fill="#f4ffe9">OBAID DOCTRINE</text>
+<text x="91" y="59" font-family="Arial,sans-serif" font-size="17" font-weight="800" letter-spacing="1.5" fill="#8be56c">LABS</text>
+<text x="91" y="77" font-family="Arial,sans-serif" font-size="9" letter-spacing=".8" fill="#b8d8cb">Smart Tools • Better Future</text>
+</svg>
